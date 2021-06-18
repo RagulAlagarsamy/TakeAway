@@ -35,6 +35,7 @@ class cart extends Component {
            status =  this.props.user[0].status;
           console.log(status);
         }
+        
         return (
             <div>
             <div className="container mt-3">

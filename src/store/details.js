@@ -1,13 +1,17 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
+import { searchList } from '../components/details/searchDetails';
 
 const slice = createSlice({
     name: 'menus',
     initialState: {
         list: [],
         user: [],
-        currentUser: []
+        currentUser: [],
+        searchList: searchList,
+        filteredSearch: [],
+        selectedItem:[]
     },
     reducers: {
         menuReceived: (menus,action) =>{
@@ -25,9 +29,10 @@ const slice = createSlice({
                 items.list[index].quantity = items.list[index].quantity+1;
                 items.list[index].total = items.list[index].price* items.list[index].quantity;
             }else{
-                action.payload.quantity =1;
-                action.payload.total = action.payload.price* action.payload.quantity;
-                items.list.push(action.payload);
+                var user = Object.assign({}, action.payload)
+                user.quantity =1;
+                user.total = user.price* user.quantity;
+                items.list.push(user);
             }
         },
         increaseItems: (items,action) =>{
@@ -76,6 +81,15 @@ const slice = createSlice({
         updateDetails: (details,action) => {
             const index = details.user.findIndex(detail => detail.email === action.payload.email);
             details.user[index] = action.payload;
+        },
+        searchLists: (details,action) => {
+            console.log(details.searchList);
+            const filtered = details.searchList.filter((item) => item.title.includes(action.payload));
+            console.log(filtered, action.payload);
+            details.filteredSearch = filtered;
+        },
+        searchSelectedList: (details,action) => {
+            details.selectedItem = action.payload
         }
     }
 })
@@ -88,7 +102,7 @@ export const loadMenus = () => apiCallBegan({
 })
 
 
-export const {menuAdded, menuResolved, menuReceived, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck} = slice.actions
+export const {menuAdded, menuResolved, menuReceived, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck,searchLists,searchSelectedList} = slice.actions
 export default slice.reducer;
 
 

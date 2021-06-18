@@ -28,8 +28,8 @@ class Menus extends Component {
  render() {
   return(
     <div>
+    <img src="http://teespring-storecontent.s3.amazonaws.com/OMJ95BcTPPMDUf4y_8PAFA_store_banner_image?1480319653676" width="100%" ></img>
     <br></br>
-    <Carousel/>
     <br></br>
     <Card cards={coffeeCardPics} heading="The Best of Coffee Drinks" selectItem = {this.onItemSelect}/>
     <br></br>
