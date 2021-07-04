@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { decreaseItems, increaseItems } from "../store/details";
+import { decreaseItems, increaseItems } from "../store/user";
+import { DataGrid } from '@material-ui/data-grid';
+import './dataGrid.css';
 
 class cart extends Component {
     constructor(props) {
@@ -35,6 +37,41 @@ class cart extends Component {
            status =  this.props.user[0].status;
           console.log(status);
         }
+
+        const columns = [
+            { field: 'src', headerName: 'Images', width: 200 , height: 500,
+            sortable: false,
+            renderCell: (params) =>{
+                return <img src={params.value} width="80px" style={{ margin: "auto" }} />
+            }
+            },
+            { field: 'title', headerName: 'Product', width: 300 
+            },
+            {
+                field: 'price',
+                headerName: 'Price',
+                type: 'number',
+                width: 200,
+              },
+              {
+                field: 'quantity',
+                headerName: 'Quality',
+                type: 'number',
+                width: 200,
+                renderCell: (params) =>{
+                    return <div>
+                    <button className="btn btn-outline-success" style={{marginRight: "10px", fontSize: "12px"}} onClick={() => this.decreaseItems(params.row)}>-</button>{params.value}<button className="btn btn-outline-success" style={{marginLeft: "10px", fontSize: "12px"}} onClick={() => this.increaseItems(params.row)}>+</button></div>
+                }
+              },
+            {
+              field: 'total',
+              headerName: 'Total',
+              type: 'number',
+              width: 200,
+            }
+          ];
+
+          const rows = this.props.menus;
         
         return (
             <div>
@@ -42,37 +79,8 @@ class cart extends Component {
             <h1 style={{textAlign: "left", margin: "30px"}}>Shopping Cart</h1>
                 <div className="row" style={{textAlign: "left", backgroundColor:"white" , margin: "30px"}}>
                 <h1 style={{textAlign: "left" , margin: "30px"}}>Your Bag  <span className="h5">{this.props.menus.length} item</span></h1>
-                    <div className="col">
-                    <table className="table shadows-lg" style={{padding: "70px"}}>
-                        <thead>
-                            <tr style={{textAlign: "center"}}>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quality</th>
-                            <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {this.props.menus.map((menu) =>{
-                            return(
-                                <tr key={menu.id} style={{textAlign: "center"}}>
-                                <td style={{textAlign: "left" ,maxWidth: "90px"}}><div className="row">
-                                    <div className= "col-lg-5 pull-right" style={{alignItems: "center"}}>
-                                    <img src={menu.src} width="50px" style={{marginLeft: "70px"}}></img>
-                                    </div>
-                                    <div className="col">
-                                    {menu.title}
-                                    </div>
-                                </div>
-                                </td>
-                                <td>{menu.price}</td>
-                                <td style={{fontSize: "20px"}}><button className="btn btn-outline-success" style={{marginRight: "10px", fontSize: "12px"}} onClick={() => this.decreaseItems(menu)}>-</button>{menu.quantity}<button className="btn btn-outline-success" style={{marginLeft: "10px", fontSize: "12px"}} onClick={() => this.increaseItems(menu)}>+</button></td>
-                                <td>${menu.total}</td>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-                        </table>
+                    <div className="col" style={{ height: 450, width: '100%', textAlign: "center" }}>
+                    <DataGrid rows={rows} columns={columns} rowHeight={100} pageSize={5} style={{ fontSize: "70px" }} />
                     </div>
                     <h4 style={{padding: "30px", textAlign:"right"}}>Total: ${total}</h4>
                 </div>

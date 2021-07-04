@@ -1,0 +1,7 @@
+.MuiDataGrid-root .MuiDataGrid-cell{
+    font-size: 20px;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeader{
+    font-size: 16px;
+}

@@ -1,8 +1,6 @@
 import React from 'react';
-import { signupDetails } from "../store/details";
+import { signupDetails } from "../store/user";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Menus from './menus';
 import "./signup.css";
   
 class signup extends React.Component {

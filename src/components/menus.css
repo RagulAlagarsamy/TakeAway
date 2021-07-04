@@ -1,0 +1,51 @@
+#filler{
+    background: url(http://teespring-storecontent.s3.amazonaws.com/OMJ95BcTPPMDUf4y_8PAFA_store_banner_image?1480319653676)center/cover no-repeat fixed;
+    min-height: 55vh;
+}
+.imgContainers{
+    width: 100%;
+    overflow:hidden;
+    display:block;
+    height: 800px;
+}
+
+@keyframes img-ani {
+    from   {opacity:0;}
+    to   {opacity:1;}
+  }
+
+#glass{
+    animation-name:img-ani;
+    animation-duration: 0.8s;   
+    animation-timing-function: ease-in;
+    
+}
+
+@keyframes img-main {
+    from   {bottom: 0px ;opacity:0.5; background-color: white;}
+    to   {bottom: 90px ;opacity:1}
+  }
+
+#mainPicture{
+    animation-name:img-main;
+    animation-duration: 0.8s;   
+    animation-timing-function: ease-in;
+}
+
+#textContent{
+    animation-name:txt-ani;
+    animation-duration: 2s;   
+    animation-timing-function: ease-in;
+}
+
+
+
+
+@keyframes txt-ani {
+    from   {right:200px ;opacity:0.5}
+    to   {right:0 ;opacity:1}
+  }
+
+  /* .carousel-item {
+    transition: opacity 10s ease-in-out !important;
+  } */

@@ -1,0 +1,25 @@
+/* #filler {
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .9)), url(https://d3btuubl2bvm9d.cloudfront.net/images/2c9f84875e9d3460015ea846a69e009f/1557407173424-web.jpg)center/cover no-repeat fixed;
+
+  } */
+
+  .height-40 {
+    background: url(https://talkingpicturesindia.com/wp-content/uploads/2019/04/D-21.jpg)center/cover no-repeat;
+    min-height: 55vh;
+  }
+
+  .height-70 {
+    background: url(https://webneel.com/daily/sites/default/files/images/daily/01-2018/8-kerala-wedding-photography-by-oakas.jpg)center/cover no-repeat;
+    min-height: 55vh;
+  }
+
+  .height-80 {
+    background: url(https://www.thefhoto.co.in/wp-content/uploads/2018/01/candid-wedding-photography.jpg)center/cover no-repeat;
+    min-height: 55vh;
+  }
+
+  .height-45 {
+    background: url(https://webneel.com/daily/sites/default/files/images/daily/01-2018/2-tamil-kerala-wedding-photography-by-vikhyathmedia.jpg)center/cover no-repeat;
+    min-height: 55vh;
+
+  }

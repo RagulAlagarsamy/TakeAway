@@ -81,4 +81,7 @@ ul.dropdown-cart li .item-right button{
 button:focus{
   outline: none;
 }
+li:focus{
+  outline: none;
+}
 

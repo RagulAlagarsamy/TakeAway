@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import {icecreamCardPics} from './details/details';
-import Card from './card';
-import { decreaseItems, increaseItems } from "../store/details";
+import { decreaseItems, increaseItems } from "../store/user";
 
 class coffee extends Component {
     constructor(props) {
@@ -31,7 +27,7 @@ class coffee extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4">
-                        <img src="https://www.searchpng.com/wp-content/uploads/2019/01/Coffee-Cup-PNG-Image-1-715x507.png" width="80%" ></img>
+                        <img src="https://thumbs.dreamstime.com/b/hot-coffee-latte-art-spiral-shape-foam-cappuccino-isolated-white-background-clipping-path-195718672.jpg" width="80%" ></img>
                         <h4 style={{ color:"#8e2e03" }}>Cappuccino</h4>
                         </div>
                         <div className="col-lg-4">

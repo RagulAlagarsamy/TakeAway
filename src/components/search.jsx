@@ -1,22 +1,28 @@
 import React from 'react';
-import {coffeeCardPics, icecreamCardPics} from './details/details';
-import { connect } from "react-redux";
-import { searchSelectedList } from "../store/details";
 import { withRouter, Link } from 'react-router-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './search.css';
+
 
 class SelectSearch extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   render() {
         const listItems = this.props.items.map((coffee) =>
-        <Link to="/selected"><li key={coffee.id}><a className="btn" onClick={() => this.props.handleClick(coffee)}>{coffee.title}</a></li></Link>
+        <Link to="/selected" ><li className="lists" key={coffee.id}><button className="btn" style={{ border: "none"}}  onClick={() => this.props.handleClick(coffee)}>
+        <div className="container" style={{ textAlign: "left"}}>
+        <div className="row">
+        <div className= "col-lg-3 pull-right" style={{alignItems: "center"}}>
+        <img src={coffee.src} width="70px"></img>
+        </div>
+        <div className="col" style={{marginLeft: "20px", marginTop:"25px"}}>
+        {coffee.title}
+        </div>
+          </div>
+        </div>
+        </button></li></Link>
         );
         
     return (
-        <div style={{ background: "white", minWidth:"25%", zIndex:0, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left", padding:"10px" ,maxHeight:"200px", overflow:"auto"}}>
+        <div style={{ background: "white", minWidth:"25%", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left", padding:"10px" ,maxHeight:"200px", overflow:"auto", position: "absolute"}}>
         {(listItems.length > 0) ? 
         <ul style={{ listStyleType: "none", padding: "0" }}>
         {listItems}

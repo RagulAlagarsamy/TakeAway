@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { updateDetails } from "../store/details";
+import { updateDetails } from "../store/user";
 import { Link } from 'react-router-dom';
 import './profile.css';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 class profile extends Component {
     constructor(props) {
@@ -22,14 +25,16 @@ class profile extends Component {
       }
 
       componentDidMount() {
-         if(this.props.users.length != 0){
+         if(this.props.users.length !== 0){
             var details = this.props.users; 
             details.map(user => {
-                if(user.email === this.props.currentUser.email){
-                    var user = Object.assign({}, user)
-                    this.setState({ input : user})
+              if(user.email === this.props.currentUser.email){
+                var users = Object.assign({}, user)
+                  return(
+                    this.setState({ input : users})
+                    )
                 }
-            })
+              })
          } 
       }
          
@@ -115,6 +120,15 @@ class profile extends Component {
          status =  this.props.users[0].status;
       }
       console.log(status);
+
+      const useStyles = makeStyles((theme) => ({
+        root: {
+          '& > *': {
+            margin: theme.spacing(1),
+            width: '25ch',
+          },
+        },
+      }));
       
         return (
             <div>
@@ -131,42 +145,45 @@ class profile extends Component {
             <div className="container mt-3">
                 <div className="mainContents text-center">
                     <main className="form-details" style={{ marginRight: "auto"}}>
-                    <form onSubmit={this.handleSubmit} style={{ textAlign: "left"}}>
+                    <form className={useStyles.root} onSubmit={this.handleSubmit} style={{ textAlign: "left"}}>
                         <h1 className="h3 mb-5 fw-normal">Profile Details</h1>
                         <div className = "row">
                             <div className = "col-lg-6">
-                            <label className="mb-2">First Name</label>
-                            <input type="text" className="form-control" name="fName"  placeholder="First Name" value={this.state.input.fName} onChange={this.handleChange}/>
+                            {/* <label className="mb-2">First Name</label> */}
+                            <TextField  id="standard-basic" className="form-control" name="fName"  label="First Name" value={this.state.input.fName} onChange={this.handleChange}/>
                             <div className="text-danger">{this.state.errors.fName}</div>
                             </div>
                             <div className = "col-lg-6">
-                            <label className="mb-2">Last Name</label>
-                            <input type="text" className="form-control" name="lName"  placeholder="Last Name" value={this.state.input.lName} onChange={this.handleChange}/>
+                            {/* <label className="mb-2">Last Name</label> */}
+                            <TextField  id="standard-basic" className="form-control" name="lName"  label="Last Name" value={this.state.input.lName} onChange={this.handleChange}/>
                             </div>
                         </div>
                         <br></br>
                         <div className = "row" style={{ textAlign: "left"}}>
                             <div className = "col-lg-6">
-                            <label className="mb-2">Email Address</label>
-                            <input type="text" className="form-control" name="email"  placeholder="Email address" disabled value={this.state.input.email} onChange={this.handleChange}/>
+                            {/* <label className="mb-2">Email Address</label> */}
+                            <TextField  id="standard-basic" className="form-control" name="email"  label="Email address" disabled value={this.state.input.email} onChange={this.handleChange}/>
                             </div>
                             <div className = "col-lg-6">
-                            <label className="mb-2">Phone Number</label>
-                            <input type="number" className="form-control" name="phone"  placeholder="Phone Number" value={this.state.input.phone} onChange={this.handleChange}/>
+                            {/* <label className="mb-2">Phone Number</label> */}
+                            <TextField  id="standard-basic" type="number" className="form-control" name="phone"  label="Phone Number" value={this.state.input.phone} onChange={this.handleChange}/>
                             <div className="text-danger">{this.state.errors.phone}</div>
                             </div>
                         </div>
                         <br></br>
                         <div className = "row" style={{ textAlign: "left"}}>
                             <div className = "col-lg-6">
-                            <label className="mb-2">Delivery Address</label>
-                            <input type="text" className="form-control" name="address"  placeholder="Delivery Address" value={this.state.input.address} onChange={this.handleChange}/>
+                            {/* <label className="mb-2">Delivery Address</label> */}
+                            <TextField  id="standard-basic" className="form-control" name="address"  label="Delivery Address" value={this.state.input.address} onChange={this.handleChange}/>
                             <div className="text-danger">{this.state.errors.address}</div>
                             </div>
                         </div>
                         <br></br>
                         <br></br>
-                        <button className="w-40 btn btn-danger" type="submit">Submit</button>
+                        {/* <button className="w-40 btn btn-danger" type="submit">Submit</button> */}
+                        <Button variant="contained" color="primary" type="submit">
+                            Submit
+                        </Button>
                     </form>
                     </main>
                 </div>

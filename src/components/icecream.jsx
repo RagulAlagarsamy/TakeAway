@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import {icecreamCardPics} from './details/details';
-import Card from './card';
-import { decreaseItems, increaseItems } from "../store/details";
+import { decreaseItems, increaseItems } from "../store/user";
 
 class icecream extends Component {
     constructor(props) {

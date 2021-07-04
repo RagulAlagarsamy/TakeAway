@@ -1,0 +1,17 @@
+.btn-check:focus+.btn, .btn:focus{
+    outline:none !important;
+    box-shadow: none;
+  } 
+  Link:focus{
+    outline: none; 
+  }
+  a:focus{
+    outline: none;  
+  }
+  
+  .lists:hover{
+       background-color: rgb(248, 244, 244);
+      color: white;
+  }
+
+ 

@@ -1,8 +1,7 @@
 import React from 'react';
-import { loginCheck } from "../store/details";
+import { loginCheck } from "../store/user";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Menus from './menus';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import "./login.css";
   
 class login extends React.Component {
@@ -34,7 +33,7 @@ class login extends React.Component {
       setTimeout(() =>{
        this.props.users.map((user) => {
          if(user.email === this.state.input.email){
-           if(user.status === true)
+           if(user.status === true || user.status === "admin")
            this.props.history.push('/menu')
          }
        })
@@ -84,7 +83,7 @@ class login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ height: "90%" }}>
         <div className="mainContents text-center">
         <main className="form-signin">
           <form onSubmit={this.handleSubmit}>

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import {icecreamCardPics} from './details/details';
 import Card from './card';
-import { decreaseItems, increaseItems } from "../store/details";
+import { decreaseItems, increaseItems } from "../store/user";
 
 class desserts extends Component {
     constructor(props) {
@@ -47,7 +47,7 @@ class desserts extends Component {
                     <br></br>
                     <div className="row">
                         <div className="col-lg-4">
-                        <img src="https://lh3.googleusercontent.com/proxy/w9UdUEdtFTsZPaIJMe0UrMlwMf6pLIwuRBqov6js7W6gEhc_u3X-nZaHSmno2J0xmvgb_ulFrYUSCQO6QEV2UTflZGEoZgRM_ulaBijCePkxdp0AxKLJDDzJu2JjBOpYnCYm" width="60%" ></img>
+                        <img src="https://lh3.googleusercontent.com/proxy/PcZ_g-ik6AbX1-cxVGP3A89f3840CwFwuBFn-k8SL9sjEuZ4Crn0eRpqzjJlYOiZ5GO1HUMJISnQ9A_j1ZVcbQBuo9zoVhYdG4wDJU9436XcBF-O4ySzII61" width="100%" ></img>
                         <h4 style={{ color:"#8e2e03" }}>Rasamalai</h4>
                         </div>
                         <div className="col-lg-4">
@@ -55,8 +55,8 @@ class desserts extends Component {
                         <h4 style={{ color:"#8e2e03", paddingTop: "0px"}}>Gulab Jamun</h4>
                         </div>
                         <div className="col-lg-4">
-                        <img src="https://bikanervala.co.nz/wp-content/uploads/2020/10/Bika-Kaju-Sweet.png" width="60%" ></img>
-                        <h4 style={{ color:"#8e2e03", }}>Raghi</h4>
+                        <img src="https://5.imimg.com/data5/JC/CU/MY-29970631/mysore-pak-500x500.png" width="80%" ></img>
+                        <h4 style={{ color:"#8e2e03", }}>Pak</h4>
                         </div>
                     </div>
                 </div>

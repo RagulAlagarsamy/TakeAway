@@ -1,6 +1,5 @@
 import React from 'react';
 import ItemsCarousel from 'react-items-carousel';
-import range from 'lodash/range';
 
 export default class Test extends React.Component {
 
@@ -33,7 +32,7 @@ export default class Test extends React.Component {
     }, 100);
   }
 
-  createChildren = pics => pics.map(pic => <div key={pic.id} style={{ height: 400, background: '#333', paddingLeft:'20' }}><img src={pic.src} /></div>);
+  createChildren = pics => pics.map(pic => <div key={pic.id} style={{ height: 400, background: '#333', paddingLeft:'20' }}><img src={pic.src} alt="" /></div>);
 
   changeActiveItem = (activeItemIndex) => this.setState({ activeItemIndex });
 
