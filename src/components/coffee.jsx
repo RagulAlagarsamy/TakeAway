@@ -74,7 +74,7 @@ class coffee extends Component {
                 </div> 
                 <img src="http://godere.vn/images/banner.jpg" width="100%"></img>
                 <div className="container-fluid mt-4 p-5" style={{ backgroundColor:"white" }} >
-                <h1 style={{ color:"#8e2e03" }}>Donuts</h1>
+                <h1 style={{ color:"#8e2e03", textAlign: "center" }}>Donuts</h1>
                     <div className="row m-5">
                         <div className="col-lg-4">
                         <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX6898921.jpg" width="100%" ></img>

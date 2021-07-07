@@ -61,7 +61,7 @@ class icecream extends Component {
                 <br></br>
                 <img src="https://wallup.net/wp-content/uploads/2019/09/768156-dessert-sweets-sugar-meal-food-ice-cream-baby-child.jpg" width="100%"></img>
                 <div className="container-fluid mt-4 p-5" style={{ backgroundColor:"white" }} >
-                <h1 style={{ color:"#8e2e03" }}>Ice Cream Cakes</h1>
+                <h1 style={{ color:"#8e2e03", textAlign: "center" }}>Ice Cream Cakes</h1>
                     <div className="row m-5">
                         <div className="col-lg-4">
                         <img src="https://dairyqueen.com.ph/wp-content/uploads/2020/06/Kitkat-Cake-8inches_-1024x1024.png" width="78%" ></img>

@@ -50,7 +50,6 @@ class navbar extends Component {
       if(this.props.user[0]){
          status =  this.props.user[0].status;
       }
-      console.log(this.state.list);
       
         return (
           <div>
@@ -70,7 +69,7 @@ class navbar extends Component {
               <Link className="nav-link" to="/desserts">Desert</Link>
             </li>
             </ul>
-            <form className="container" style={{maxWidth:"505px", marginRight:"auto", marginLeft:"5px"}}>
+            <form className="container" style={{maxWidth:"415px", marginRight:"auto", marginLeft:"5px"}}>
               <div className="input-group">
                 <input type="text" className="form-control" placeholder="Search for Coffees, Desserts, Icecreams" aria-label="Username" aria-describedby="basic-addon1"  onChange={(e) => this.changeHandler(e)} onClick={this.handleChange} onBlur={this.onBlur}/>
               </div>
@@ -83,6 +82,9 @@ class navbar extends Component {
         <ul className="navbar-nav">
             <li className="nav-item navbar-right" >
             {status === true && ( <Link className="nav-link" to="/profile">Profile</Link> ) }
+            </li>
+            <li className="nav-item navbar-right" >
+            {status === true && ( <Link className="nav-link" to="/chat">Chat</Link> ) }
             </li>
             <li className="nav-item navbar-right" >
             {status === "admin" && ( <Link className="nav-link" to="/adminPanel">Profile</Link> ) }

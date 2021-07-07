@@ -7,7 +7,7 @@ class SelectSearch extends React.Component {
 
   render() {
         const listItems = this.props.items.map((coffee) =>
-        <Link to="/selected" ><li className="lists" key={coffee.id}><button className="btn" style={{ border: "none"}}  onClick={() => this.props.handleClick(coffee)}>
+        <Link to="/selected" key={coffee.id} ><li className="lists"><button className="btn" style={{ border: "none"}}  onClick={() => this.props.handleClick(coffee)}>
         <div className="container" style={{ textAlign: "left"}}>
         <div className="row">
         <div className= "col-lg-3 pull-right" style={{alignItems: "center"}}>
@@ -22,7 +22,7 @@ class SelectSearch extends React.Component {
         );
         
     return (
-        <div style={{ background: "white", minWidth:"25%", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left", padding:"10px" ,maxHeight:"200px", overflow:"auto", position: "absolute"}}>
+        <div style={{ background: "white", minWidth:"26%", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left", padding:"10px" ,maxHeight:"200px", overflow:"auto", position: "absolute"}}>
         {(listItems.length > 0) ? 
         <ul style={{ listStyleType: "none", padding: "0" }}>
         {listItems}

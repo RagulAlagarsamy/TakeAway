@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { decreaseItems, increaseItems } from "../store/user";
+import { decreaseItems, increaseItems, getItems} from "../store/user";
 import { DataGrid } from '@material-ui/data-grid';
 import './dataGrid.css';
+import firebase  from '../config/fbConfig';
 
 class cart extends Component {
     constructor(props) {
         super(props);
         this.state={
             ModalVisibles: false,
+            menus:[]
         }
+    }
+
+    fetchBlogs=async()=>{
+        const items = [];
+        firebase.collection("Orders").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                items.push(doc.data())
+            });
+            this.setState({ menus : items })
+        });
+      }
+
+    componentDidMount(){
+        this.fetchBlogs();
+    //    const menu =  getItems();
+    //    console.log(menu);
     }
 
      getArraySum = (a) => {

@@ -5,11 +5,12 @@ import thunk from 'redux-thunk';
 import reducer  from "./user";
 import api from "../middleware/api";
 
+
 export default function (){
     const store = configureStore({reducer,
     middleware: [
         ...getDefaultMiddleware(),
         api
-    ]},  applyMiddleware(thunk))
+    ]},applyMiddleware(thunk))
     return store;
 }

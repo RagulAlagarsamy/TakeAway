@@ -124,7 +124,7 @@ class selected extends Component {
                                 {(this.state.quantity.quantity === 0)? <button className="btn btn-outline-success" style={{margin: "10px", fontSize: "12px"}} onClick={this.increaseItems}>Order</button> :
                                 <div><button className="btn btn-outline-success" style={{marginRight: "10px", fontSize: "12px"}} onClick={this.decreaseItems}>-</button>{this.state.quantity.quantity}<button className="btn btn-outline-success" style={{marginLeft: "10px", fontSize: "12px"}} onClick={this.increaseItems}>+</button><br></br><button className="btn btn-outline-success mt-3" onClick={() => this.setQuantity(this.state.quantity)} style={{fontSize:"11px"}}>ADD TO CART</button></div>}
                                 <AvatarGroup max={4} className="mt-3" >
-                                <h5 style={{ marginRight: "10px", marginTop: "6px" }}>Reviewsss:</h5>
+                                <h5 style={{ marginRight: "10px", marginTop: "6px" }}>Reviews:</h5>
                                 <BootstrapTooltip title="Jason">
                                 <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" />
                                 </BootstrapTooltip>

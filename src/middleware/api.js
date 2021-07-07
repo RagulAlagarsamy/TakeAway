@@ -1,9 +1,13 @@
 
 import axios from "axios";
 import * as actions from "../store/api";
+import firebase  from '../config/fbConfig';
+
+const db = firebase.collection("/Orders");
 
 
 const api = ({ dispatch }) => next => async action => {
+    console.log(action.type);
     switch(action.type){
         case actions.apiCallBegan.type :
             next(action)
@@ -27,6 +31,18 @@ const api = ({ dispatch }) => next => async action => {
                 dispatch({ type: onError, payload: error });
             }
             break;
+        case actions.userAddItems.type :
+            // next(action)
+                const order = action.payload
+                return db.add(order).then(ref =>{
+                    console.log(ref);
+                    next(action)
+                })   
+        case actions.userGetItems.type :
+            console.log("db:",db.get());
+            const items = db
+            console.log(items);
+            // next(action)
        default:
         next(action)
     }

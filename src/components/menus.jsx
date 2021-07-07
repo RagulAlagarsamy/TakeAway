@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import {coffeeCardPics, icecreamCardPics} from './details/details';
 import './menus.css';
 import Carousel from 'react-bootstrap/Carousel' 
-import Video from '../assets/489_girl_drink_coffee.mp4';
-import Videos from '../assets/1DJI_0619.mov';
-import Image from '../assets/vecteezy_barista-pouring-milk-into-a-glass-of-iced-coffee_2671770.jpg'
-import newImage from '../assets/vecteezy_a-cup-of-art-latte-or-cappuccino-coffee-with-retro-filter-effect_1898592.jpg'
+// import Video from '../assets/489_girl_drink_coffee.mp4';
+// import Videos from '../assets/1DJI_0619.mov';
+// import Image from '../assets/vecteezy_barista-pouring-milk-into-a-glass-of-iced-coffee_2671770.jpg'
+// import newImage from '../assets/vecteezy_a-cup-of-art-latte-or-cappuccino-coffee-with-retro-filter-effect_1898592.jpg'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -54,8 +54,8 @@ class Menus extends Component {
     <div style={{ backgroundColor: "black"}}>
     <Carousel fade interval={5000} >
       <Carousel.Item pause="hover">
-      <div class="imgContainers">
-      <video id="glass" width="1920" height="1080" className="videoTag"  loop autoPlay src={Video} playing={false} type="video/mp4" style={{ bottom: "100px", position: "relative"}} /> */}
+      <div className="imgContainers">
+      {/* <video id="glass" width="1920" height="1080" className="videoTag" loop autoPlay src={Video} type="video/mp4" style={{ bottom: "100px", position: "relative"}} /> */}
       <div id="textContent" style={{ textAlign : "left", padding:"60px",zIndex:"1",bottom: "850px" ,position:"relative", color: "black"}}>
       <h1 style={{ fontSize: "80px", fontFamily: 'Lato, sans-serif', marginBottom: "40px", marginLeft: "40px" }}>The Stylish <br />coffee</h1>
       <h2 style={{ fontSize: "18px", fontFamily: 'Barlow Condensed, sans-serif',marginLeft: "40px" }}>A cup of coffee lasts only a moment, but it is <br /> that moment that makes your day better.</h2>
@@ -63,8 +63,8 @@ class Menus extends Component {
       </div> 
       </Carousel.Item>
       <Carousel.Item>
-      <div class="imgContainers">
-      <img src={newImage} width="100%" />
+      <div className="imgContainers">
+      {/* <img src={newImage} width="100%" /> */}
        {/* <video id="glass" width="1920" height="1080" className="videoTag"  loop autoPlay src={Videos} type="video/mp4" style={{ bottom: "100px", position: "relative"}} /> */}
       <div id="newContents" style={{ textAlign : "left", padding:"60px",zIndex:"1",bottom: "1150px" , left: "150px" ,position:"relative", color: "white"}}>
       <h1 style={{ fontSize: "80px", fontFamily: 'Lato , sans-serif', marginBottom: "40px", marginLeft: "40px" }}>WE LOVE <br />WHAT WE DO</h1>
@@ -73,8 +73,8 @@ class Menus extends Component {
     </div>
       </Carousel.Item>
       <Carousel.Item>
-      <div class="imgContainers">
-       <img src={Image} width="100%" />
+      <div className="imgContainers">
+       {/* <img src={Image} width="100%" /> */}
       <div id="textContents" style={{ textAlign : "left", padding:"60px",zIndex:"1",bottom: "900px" , left: "1000px" ,position:"relative", color: "white"}}>
       <h1 style={{ fontSize: "80px", fontFamily: 'Lato , sans-serif', marginBottom: "40px", marginLeft: "40px" }}>COFFEE IS <br />OUR LANGUAGE</h1>
       <h2 style={{ fontSize: "18px", fontFamily: 'Barlow Condensed, sans-serif',marginLeft: "40px" }}>A cup of coffee lasts only a moment, but it is <br /> that moment that makes your day better.</h2>
@@ -85,9 +85,9 @@ class Menus extends Component {
 
 
    <div style={{ backgroundColor: "black", margin: "100px"}}>
-    <p style={{ color: "#c7a17a", fontSize: '18px', fontFamily: 'Merriweather, serif'}}>What Happens Here</p>
-    <h1 style={{ color: "white", fontFamily: 'Oswald, sans-serif', fontWeight: "700", lineHeight: "1.14286em", marginBottom: "19px" }}>COFFEE BUILD YOUR BASE.</h1>
-    <div style={{ width: "120px", borderBottomWidth: "3px", borderBottom: "3px solid #c7a17a", verticalAlign:"middle", position: "relative", display:"inline-block", margin:"5px 0", lineHeight: "1em"}}></div>
+    <p style={{ color: "#c7a17a", fontSize: '18px', fontFamily: 'Merriweather, serif', textAlign: "center"}}>What Happens Here</p>
+    <h1 style={{ color: "white", fontFamily: 'Oswald, sans-serif', fontWeight: "700", lineHeight: "1.14286em", marginBottom: "19px", textAlign: "center" }}>COFFEE BUILD YOUR BASE.</h1>
+    <div style={{ width: "120px", borderBottomWidth: "3px", borderBottom: "3px solid #c7a17a", verticalAlign:"middle", position: "relative", display:"inline-block", margin:"5px 0", lineHeight: "1em", left: "590px"}}></div>
 
     <div className="container mt-5" style={{ textAlign: "left" }}>
       <div className="row">

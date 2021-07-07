@@ -1,8 +1,10 @@
 import React from 'react';
-import { loginCheck } from "../store/user";
+import { loginCheck, googleSign } from "../store/user";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import "./login.css";
+import { signInWithGoogle } from "../helpers/auth";
+import Button from '@material-ui/core/Button';
   
 class login extends React.Component {
     constructor(props) {
@@ -12,9 +14,30 @@ class login extends React.Component {
         email:"",
         password: ""
       },
-      errors: {}
+      errors: {},
+      error:""
     };
   }
+
+   googleSignIn = async () => {
+    try {
+      await signInWithGoogle().then((res) => {
+        if(res){
+          console.log(res);
+          console.log(this.props);
+          const user = {
+            email: res.user.email,
+            fName: res.user.displayName
+          }
+          this.props.history.push('/menu');
+          this.props.dispatch(googleSign(user));
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
      
   handleChange = (event) => {
     let input = this.state.input;
@@ -101,8 +124,11 @@ class login extends React.Component {
             </div> 
             <br></br>
             <button className="w-100 btn btn-lg btn-danger" type="submit">Sign in</button>
-            <p style={{ paddingTop:"15px", textAlign: "end"}}><Link to="/signup" style={{textDecoration: "none"}}>Not a member</Link></p>
           </form>
+          <div style={{ marginTop: "15px" }}>
+            <p style={{ display: "inline", paddingTop: "16px"}}><Link to="/signup" style={{textDecoration: "none"}}>Not a member</Link></p>
+            <Button className="btns pull-left" variant="contained" color="primary" onClick={this.googleSignIn} style={{ marginRight: "auto" }}>Google Signin</Button>
+          </div>
         </main>
       </div>
       </div>
