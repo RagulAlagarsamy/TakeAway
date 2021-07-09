@@ -4,6 +4,7 @@ import { db } from "../config/fbConfig";
 import { connect } from "react-redux";
 import firebase  from '../config/fbConfig';
 import './chat.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Chat extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Chat extends Component {
 
   async componentDidMount() {
     this.setState({ readError: null, loadingChats: true });
+    console.log(this.myRef.current);
     const chatArea = this.myRef.current;
     try {
       db.ref("chats").on("value", snapshot => {
@@ -31,9 +33,8 @@ class Chat extends Component {
           chats.push(snap.val());
         });
         chats.sort(function (a, b) { return a.timestamp - b.timestamp })
-        this.setState({ chats });
-        chatArea.scrollBy(0, chatArea.scrollHeight);
         this.setState({ loadingChats: false });
+        this.setState({ chats });
       });
     } catch (error) {
       this.setState({ readError: error.message, loadingChats: false });
@@ -47,7 +48,6 @@ class Chat extends Component {
   }
 
   async handleSubmit(event) {
-    console.log("entered",this.state);
     event.preventDefault();
     this.setState({ writeError: null });
     const chatArea = this.myRef.current;
@@ -58,7 +58,6 @@ class Chat extends Component {
         uid: this.state.user.fName
       });
       this.setState({ content: '' });
-      chatArea.scrollBy(0, chatArea.scrollHeight);
     } catch (error) {
       this.setState({ writeError: error.message });
     }
@@ -71,16 +70,26 @@ class Chat extends Component {
   }
 
   render() {
+    let status = false;
+    if(this.props.users[0]){
+       status =  this.props.users[0].status;
+    }
     return (
-      <div>
-
-        <div className="chat-area" ref={this.myRef}>
+      <div className="container mt-3">
+      <div className="mainContents text-center">
+      <div className="w-100" style={{ backgroundColor: "white", padding: "30px", borderRadius: "25px"}}>
+          <h4 style={{ textAlign: "left" }} >Send Message to Admin </h4>
+          { (!status) ? <div style={{ textAlign: "left", marginTop: "30px" }}><h6>Please login</h6></div>:
+        <div>
+        <div className="chat-area">
           {/* loading indicator */}
-          {this.state.loadingChats ? <div className="spinner-border text-success" role="status">
-            <span className="sr-only">Loading...</span>
+          {(this.state.loadingChats) ? <div className=" text-success" role="status">
+            <h5>Loading...</h5> 
+          <span class="spinner-border spinner-border-sm p-3" role="status" aria-hidden="true"></span>
           </div> : ""}
           {/* chat area */}
           {this.state.chats.map(chat => {
+            if(chat.uid === "admin" || "Raghul" === chat.uid ){
             return <div key={chat.timestamp}>
               <h5 className={"chat-bubble " + (this.state.user.fName === chat.uid ? "current-name" : "other-name")}>
                 {(this.state.user.fName === chat.uid ? "Me" : chat.uid)}</h5>
@@ -90,23 +99,26 @@ class Chat extends Component {
               <span className="chat-time float-right">{this.formatTime(chat.timestamp)}</span>
             </p>
               </div>
+            }
           })}
         </div>
-        <form onSubmit={this.handleSubmit} className="mx-3">
-          <textarea className="form-control" name="content" onChange={this.handleChange} value={this.state.content}></textarea>
+        <form onSubmit={this.handleSubmit}>
+          <textarea style={{ display: "inline", padding: "10px" }} rows="1" className="form-control" name="content" onChange={this.handleChange} value={this.state.content}></textarea>
           {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
-          <button type="submit" className="btn btn-submit px-5 mt-4">Send</button>
+          <button type="submit" className="btn btn-outline-success px-5">Send Message</button>
         </form>
-        <div className="py-5 mx-3">
-          Login in as: <strong className="text-info">{this.state.user.email}</strong>
         </div>
+          }
+      </div>
+      </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({  
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  users: state.user,
 })
 
 export default connect(mapStateToProps)(Chat)

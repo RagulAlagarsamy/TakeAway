@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+
 const useStylesBootstrap = makeStyles((theme) => ({
     arrow: {
       color: theme.palette.common.black,
@@ -122,7 +123,7 @@ class selected extends Component {
                                 <h3 style={{ margin: "auto", textAlign: "left"}}>{this.state.quantity.title}</h3>
                                 <p className="mt-4">{this.state.quantity.description}</p>
                                 {(this.state.quantity.quantity === 0)? <button className="btn btn-outline-success" style={{margin: "10px", fontSize: "12px"}} onClick={this.increaseItems}>Order</button> :
-                                <div><button className="btn btn-outline-success" style={{marginRight: "10px", fontSize: "12px"}} onClick={this.decreaseItems}>-</button>{this.state.quantity.quantity}<button className="btn btn-outline-success" style={{marginLeft: "10px", fontSize: "12px"}} onClick={this.increaseItems}>+</button><br></br><button className="btn btn-outline-success mt-3" onClick={() => this.setQuantity(this.state.quantity)} style={{fontSize:"11px"}}>ADD TO CART</button></div>}
+                                <div><button className="btn btn-outline-success" style={{marginRight: "10px", fontSize: "12px", marginTop: 0}} onClick={this.decreaseItems}>-</button>{this.state.quantity.quantity}<button className="btn btn-outline-success" style={{marginLeft: "10px", fontSize: "12px",marginTop: 0}} onClick={this.increaseItems}>+</button><br></br><button className="btn btn-outline-success mt-3" onClick={() => this.setQuantity(this.state.quantity)} style={{fontSize:"11px"}}>ADD TO CART</button></div>}
                                 <AvatarGroup max={4} className="mt-3" >
                                 <h5 style={{ marginRight: "10px", marginTop: "6px" }}>Reviews:</h5>
                                 <BootstrapTooltip title="Jason">
@@ -135,10 +136,12 @@ class selected extends Component {
                                 <Avatar alt="Agnes Walker" src="https://images.pexels.com/photos/2078265/pexels-photo-2078265.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
                                 <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
                                 </AvatarGroup>
+                                <br></br>
+                                <br></br>
                                 <Backdrop  open= {true}>
                                 <CircularProgress color="inherit" />
-                                </Backdrop>
-                                </div>
+                                </Backdrop>     
+                                </div>         
                     </div>
                     <Snackbar className={classes.backdrop} open={open} autoHideDuration={6000} onClose={this.handleClose}>
                     <Alert onClose={this.handleClose} severity="success">
@@ -146,6 +149,7 @@ class selected extends Component {
                     </Alert>
                     </Snackbar>
                 </div>
+                
                     : <div className="container mt-3 shadow" style={{ backgroundColor: "white", borderRadius:"10px" }}> <div className="row" style={{textAlign: "left", backgroundColor:"white" , margin: "30px"}}><h1 style={{textAlign: "left", margin: "30px"}}>Product Details</h1> <h5 style={{textAlign: "left", margin: "30px"}}>Please select an item.</h5> </div> </div>}
             </div>
         );
@@ -156,7 +160,8 @@ class selected extends Component {
 const mapStateToProps = state => {  
     return{
         selectedItem: state.selectedItem,
-        list: state.list
+        list: state.list,
+        user: state.currentUser
     }
 }
 

@@ -7,7 +7,6 @@ const db = firebase.collection("/Orders");
 
 
 const api = ({ dispatch }) => next => async action => {
-    console.log(action.type);
     switch(action.type){
         case actions.apiCallBegan.type :
             next(action)

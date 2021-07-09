@@ -22,12 +22,12 @@ class SelectSearch extends React.Component {
         );
         
     return (
-        <div style={{ background: "white", minWidth:"26%", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left", padding:"10px" ,maxHeight:"200px", overflow:"auto", position: "absolute"}}>
+        <div className="shadows-lg mb-5 rounded" style={{ background: "white", minWidth:"27%", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left" ,maxHeight:"200px", overflow:"auto"}}>
         {(listItems.length > 0) ? 
         <ul style={{ listStyleType: "none", padding: "0" }}>
         {listItems}
         </ul>
-        : <p>No Matches Found</p> }
+        : <p style={{ padding: "10px 15px" }}>No Matches Found</p> }
 
       </div>
     );

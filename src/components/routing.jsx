@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Menus from './menus';
 import Login from './login';
 import Signup from './signup';
@@ -14,6 +14,8 @@ import Chat from './chat';
 import adminPanel from './adminPanel';
 import ProductManagement from './ProductManagement';
 import Analytics from './analytics';
+
+
 
 class routing extends Component {
     render() {

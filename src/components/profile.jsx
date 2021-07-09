@@ -6,6 +6,8 @@ import './profile.css';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import { storage } from '../config/fbConfig'
 
 class profile extends Component {
     constructor(props) {
@@ -20,6 +22,7 @@ class profile extends Component {
             address: "",
             status: false
           },
+          url:"",
           errors: {}
         };
       }
@@ -51,11 +54,25 @@ class profile extends Component {
         event.preventDefault();
         if(this.validate()){
         const input = this.state.input;
+        input.image =this.state.url
         console.log(input);
         this.props.dispatch(updateDetails(input));
         alert("Successfully Updated.")
         }else{
             console.log("error");
+        }
+      }
+
+      handleImageChange = e => {
+        console.log(e.target.files[0]);
+        if (e.target.files[0]) {
+          const image = e.target.files[0];
+          const uploadTask = storage.ref(`images/${image.name}`).put(image);
+          console.log(uploadTask);
+          storage.ref('images').child(image.name).getDownloadURL().then(url => {
+            console.log(url);
+            this.setState({url});
+        })
         }
       }
 
@@ -179,7 +196,23 @@ class profile extends Component {
                             </div>
                         </div>
                         <br></br>
+
+                        <div className="container mt-3">
+                          <div className="mainContents shadows p-3 mb-3" style={{ backgroundColor: "white", width: "100%", borderRadius: "25px", border: "1px solid black" }}>
+                            <div className="row m-3 w-100">
+                              <h4 className="p-3">Image Upload</h4>
+                              <div className="col-lg-6" >
+                                <input type="file"  style={{ alignItems: "center", border: "1px thin black", padding:"10px", borderRadius: "15px", margin: "auto" }} onChange={(e) => this.handleImageChange(e)}/>
+                                </div>
+                                <div className="col-lg-6">
+                                <img src={this.state.url || 'https://media.hd.pics/1/3z3kp99e3z.jpg'} alt="Uploaded images" height="200" width="200"/>
+                              </div>
+                            </div>
+                        </div>
+                        </div>
                         <br></br>
+                        <br></br>
+
                         {/* <button className="w-40 btn btn-danger" type="submit">Submit</button> */}
                         <Button variant="contained" color="primary" type="submit">
                             Submit

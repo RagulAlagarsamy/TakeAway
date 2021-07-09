@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import './profile.css';
 import ProductManagement from './ProductManagement';
-import { BrowserRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import {routes} from './routing';
 import Analytics from './analytics';
 // import './adminPanel.css'

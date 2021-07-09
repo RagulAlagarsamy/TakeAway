@@ -1,10 +1,11 @@
 import React from 'react';
 import { loginCheck, googleSign } from "../store/user";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import "./login.css";
 import { signInWithGoogle } from "../helpers/auth";
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
   
 class login extends React.Component {
     constructor(props) {
@@ -23,13 +24,11 @@ class login extends React.Component {
     try {
       await signInWithGoogle().then((res) => {
         if(res){
-          console.log(res);
-          console.log(this.props);
           const user = {
             email: res.user.email,
             fName: res.user.displayName
           }
-          this.props.history.push('/menu');
+          this.onSuccessRedirect();
           this.props.dispatch(googleSign(user));
         }
       });
@@ -47,6 +46,13 @@ class login extends React.Component {
       input
     });
   }
+
+  onSuccessRedirect = async () => {
+    // axios.post('http://localhost:5001/api/sms',
+    // {to: "+916379350835",
+    // body: "TAKEAWAY - Dear Customer,you have successfully login into your account."})
+      this.props.history.push('/menu')
+   }
      
   handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,9 +62,10 @@ class login extends React.Component {
       setTimeout(() =>{
        this.props.users.map((user) => {
          if(user.email === this.state.input.email){
-           if(user.status === true || user.status === "admin")
-           this.props.history.push('/menu')
-         }
+           if(user.status === true || user.status === "admin"){
+             this.onSuccessRedirect()
+           }
+          }
        })
       },1000)
     }
@@ -112,13 +119,13 @@ class login extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <h1 className="h3 mb-3 fw-normal">Sign in</h1>
             <div className="form-floating">
-              <input type="email" className="form-control" name="email" id="floatingInput" placeholder="name@example.com" value={this.state.input.email} onChange={this.handleChange}/>
+              <input type="email" style={{ width: "100%" }} className="form-control" name="email" id="floatingInput" placeholder="name@example.com" value={this.state.input.email} onChange={this.handleChange}/>
               <label htmlFor="floatingInput">Email address</label>
               <div className="text-danger" style={{textAlign: "left"}}>{this.state.errors.email}</div>
             </div>
             <br></br>
             <div className="form-floating">
-              <input type="password" className="form-control" name="password" id="floatingPassword" value={this.state.input.password} onChange={this.handleChange} placeholder="Password" />
+              <input type="password" style={{ width: "100%" }} className="form-control" name="password" id="floatingPassword" value={this.state.input.password} onChange={this.handleChange} placeholder="Password" />
               <label htmlFor="floatingPassword">Password</label>
               <div className="text-danger" style={{textAlign: "left"}}>{this.state.errors.password}</div>
             </div> 
@@ -126,7 +133,7 @@ class login extends React.Component {
             <button className="w-100 btn btn-lg btn-danger" type="submit">Sign in</button>
           </form>
           <div style={{ marginTop: "15px" }}>
-            <p style={{ display: "inline", paddingTop: "16px"}}><Link to="/signup" style={{textDecoration: "none"}}>Not a member</Link></p>
+            <Button  style={{ display: "inline"}}><Link to="/signup" style={{textDecoration: "none"}}>Not a member</Link></Button>
             <Button className="btns pull-left" variant="contained" color="primary" onClick={this.googleSignIn} style={{ marginRight: "auto" }}>Google Signin</Button>
           </div>
         </main>

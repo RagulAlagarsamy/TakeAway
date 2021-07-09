@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 import { searchList } from '../components/details/searchDetails';
-import database from '../config/fbConfig';
+
 
 const slice = createSlice({
     name: 'users',
@@ -68,6 +68,7 @@ const slice = createSlice({
                 details.user = [action.payload]
                 details.user[0].status = "admin"
                 details.currentUser = action.payload
+                details.currentUser.fName = "admin"
             }else{
                 index = details.user.findIndex(detail => detail.email === action.payload.email);
                 if(index !== -1) {
@@ -141,10 +142,11 @@ const slice = createSlice({
             if(index !== -1) {
                 details.list[index] = action.payload;
                 details.list[index].total = details.list[index].price* details.list[index].quantity;
-                const order = details.list[index]
-                return database.ref('orders').push(order).then(ref =>{
-                    console.log(ref);
-                })
+                // return setTimeout(() => {
+                //     database.ref('orders').push(order).then(ref =>{
+                //         console.log(ref);
+                //     })
+                // },1000)
             }else{
                 if(details.list.length !== 0){
                     var item = Object.assign({}, action.payload)
@@ -164,6 +166,9 @@ const slice = createSlice({
         },
         getItems: (details) =>{
             console.log(details);
+        },
+        paymentSuccess: (details) =>{
+            details.list = []
         }
     }
 })
@@ -178,7 +183,7 @@ export const loadMenus = () => apiCallBegan({
 })
 
 
-export const {menuAdded, menuResolved, getItems, menuReceived, googleSign, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck,searchLists,searchSelectedList,updateQuantityDetails,deleteItem,updateProductDetails,addItem} = slice.actions
+export const {menuAdded, menuResolved, getItems, menuReceived, googleSign, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck,searchLists,searchSelectedList,updateQuantityDetails,deleteItem,updateProductDetails,addItem,paymentSuccess} = slice.actions
 export default slice.reducer;
 
 

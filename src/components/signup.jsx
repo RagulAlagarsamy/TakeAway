@@ -95,25 +95,25 @@ class signup extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <h1 className="h3 mb-3 fw-normal">Sign up</h1>
             <div className="form-floating">
-              <input type="text" className="form-control" name="fName" id="floatingInput" placeholder="name" value={this.state.input.fName} onChange={this.handleChange}/>
+              <input style={{ width: "100%" }} type="text" className="form-control" name="fName" id="floatingInput" placeholder="name" value={this.state.input.fName} onChange={this.handleChange}/>
               <label htmlFor="floatingInput">Enter the First Name</label>
               <div className="text-danger" style={{textAlign: "left"}}>{this.state.errors.fName}</div>
             </div>
             <br></br>
             <div className="form-floating">
-              <input type="text" className="form-control" name="lName" id="floatingInput" placeholder="name" value={this.state.input.lName} onChange={this.handleChange}/>
+              <input style={{ width: "100%" }} type="text" className="form-control" name="lName" id="floatingInput" placeholder="name" value={this.state.input.lName} onChange={this.handleChange}/>
               <label htmlFor="floatingInput">Enter the Last Name</label>
               <div className="text-danger" style={{textAlign: "left"}}>{this.state.errors.lName}</div>
             </div>
             <br></br>
             <div className="form-floating">
-              <input type="email" className="form-control" name="email" id="floatingInput" placeholder="name@example.com" value={this.state.input.email} onChange={this.handleChange}/>
+              <input style={{ width: "100%" }} type="email" className="form-control" name="email" id="floatingInput" placeholder="name@example.com" value={this.state.input.email} onChange={this.handleChange}/>
               <label htmlFor="floatingInput">Email address</label>
               <div className="text-danger" style={{textAlign: "left"}}>{this.state.errors.email}</div>
             </div>
             <br></br>
             <div className="form-floating">
-              <input type="password" className="form-control" name="password" id="floatingPassword" value={this.state.input.password} onChange={this.handleChange} placeholder="Password" />
+              <input style={{ width: "100%" }} type="password" className="form-control" name="password" id="floatingPassword" value={this.state.input.password} onChange={this.handleChange} placeholder="Password" />
               <label htmlFor="floatingPassword">Password</label>
               <div className="text-danger" style={{textAlign: "left"}}>{this.state.errors.password}</div>
             </div> 

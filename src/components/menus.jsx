@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import {coffeeCardPics, icecreamCardPics} from './details/details';
 import './menus.css';
 import Carousel from 'react-bootstrap/Carousel' 
-// import Video from '../assets/489_girl_drink_coffee.mp4';
+import Video from '../assets/489_girl_drink_coffee.mp4';
 // import Videos from '../assets/1DJI_0619.mov';
-// import Image from '../assets/vecteezy_barista-pouring-milk-into-a-glass-of-iced-coffee_2671770.jpg'
+import Image from '../assets/vecteezy_barista-pouring-milk-into-a-glass-of-iced-coffee_2671770.jpg'
 // import newImage from '../assets/vecteezy_a-cup-of-art-latte-or-cappuccino-coffee-with-retro-filter-effect_1898592.jpg'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -52,10 +52,12 @@ class Menus extends Component {
   });
   return(
     <div style={{ backgroundColor: "black"}}>
-    <Carousel fade interval={5000} >
+      <div className="carousel">
+
+    <Carousel fade interval={5000} style={{ zIndex: 0 }} >
       <Carousel.Item pause="hover">
       <div className="imgContainers">
-      {/* <video id="glass" width="1920" height="1080" className="videoTag" loop autoPlay src={Video} type="video/mp4" style={{ bottom: "100px", position: "relative"}} /> */}
+      <video id="glass" className="videoTag" loop autoPlay src={Video} type="video/mp4" style={{ bottom: "100px", position: "relative"}} />
       <div id="textContent" style={{ textAlign : "left", padding:"60px",zIndex:"1",bottom: "850px" ,position:"relative", color: "black"}}>
       <h1 style={{ fontSize: "80px", fontFamily: 'Lato, sans-serif', marginBottom: "40px", marginLeft: "40px" }}>The Stylish <br />coffee</h1>
       <h2 style={{ fontSize: "18px", fontFamily: 'Barlow Condensed, sans-serif',marginLeft: "40px" }}>A cup of coffee lasts only a moment, but it is <br /> that moment that makes your day better.</h2>
@@ -74,14 +76,15 @@ class Menus extends Component {
       </Carousel.Item>
       <Carousel.Item>
       <div className="imgContainers">
-       {/* <img src={Image} width="100%" /> */}
-      <div id="textContents" style={{ textAlign : "left", padding:"60px",zIndex:"1",bottom: "900px" , left: "1000px" ,position:"relative", color: "white"}}>
-      <h1 style={{ fontSize: "80px", fontFamily: 'Lato , sans-serif', marginBottom: "40px", marginLeft: "40px" }}>COFFEE IS <br />OUR LANGUAGE</h1>
+       <img src={Image} width="100%" />
+      <div id="textContents" style={{ textAlign : "left", padding:"60px",zIndex:"1",bottom: "650px" , left: "750px" ,position:"relative", color: "white"}}>
+      <h1 style={{ fontSize: "70px", fontFamily: 'Lato , sans-serif', marginBottom: "20px", marginLeft: "20px" }}>COFFEE IS <br />OUR LANGUAGE</h1>
       <h2 style={{ fontSize: "18px", fontFamily: 'Barlow Condensed, sans-serif',marginLeft: "40px" }}>A cup of coffee lasts only a moment, but it is <br /> that moment that makes your day better.</h2>
       </div> 
     </div>
       </Carousel.Item>
     </Carousel>
+      </div>
 
 
    <div style={{ backgroundColor: "black", margin: "100px"}}>

@@ -7,6 +7,7 @@ import "firebase/firestore";
 import 'firebase/messaging';
 import "firebase/auth";
 import "firebase/database";
+import "firebase/storage";
 
 var config = {
     apiKey: "AIzaSyAoeyiWuXGx8O0qfbhcgPnucsusIW1vI8c",
@@ -47,10 +48,9 @@ var config = {
 
   export const auth = firebase.auth;
   export const db = firebase.database();
+  export const storage = firebase.storage();
 
   export default firebase.firestore();
-
-
   
 
   
