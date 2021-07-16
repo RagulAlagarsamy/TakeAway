@@ -10,7 +10,7 @@ import "firebase/database";
 import "firebase/storage";
 
 var config = {
-    apiKey: "AIzaSyAoeyiWuXGx8O0qfbhcgPnucsusIW1vI8c",
+    apiKey: "firebaseapi",
     authDomain: "takeaway-a0976.firebaseapp.com",
     databaseURL: "https://takeaway-a0976-default-rtdb.firebaseio.com",
     projectId: "takeaway-a0976",

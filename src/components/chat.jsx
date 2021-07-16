@@ -57,7 +57,7 @@ class Chat extends Component {
     this.setState({ writeError: null });
     try {
       let body = {
-        to: "BFQcb3yPhd57ZJVIndAtg-s_a1D7HY7SjKiuk760DHctKs_CGzWU-8DKU5_Mu7I-IQXzYlJB4xJPXuUhAv-xl3I",
+        to: "FCM key",
         notification:{
           title: this.state.user.fName,
           body: this.state.content
@@ -67,7 +67,7 @@ class Chat extends Component {
         method:"POST",
         headers: new Headers({
           Authorization:
-          "key=AAAAIvzLj0I:APA91bH7oFk99OYT7KsqdQCTm4Tn2OBLjhcU3V4Kvk65d1th1YmgwVIImgQcIzxrlRy97heGpNX8b0_DxWdb7xn5zd7sSDXqQnEG_-gQiEMKuRDqs1WM2KVQZqRBZYlDzxHjVWMdDEkf",
+          "key=firebasekey",
           "Content-Type": "application/json"
         }),
         body: JSON.stringify(body)

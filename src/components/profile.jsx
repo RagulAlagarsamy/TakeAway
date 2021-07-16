@@ -234,7 +234,7 @@ class profile extends Component {
                               <h4 className="p-3">Enter your location</h4>
                               <div className="col-lg-6" >
                               <Autocomplete
-                                  apiKey={"AIzaSyBtMaALKyDaZ7UEF9liXHw1LputwA0UKjU"}
+                                  apiKey={"googleapi"}
                                   onPlaceSelected={(place) => {
                                     console.log(place);
                                   }}
@@ -247,7 +247,7 @@ class profile extends Component {
                                 <div className="col-lg-6">
                                 <div style={{ height: '50vh', width: '80%' }}>
                                   <GoogleMapReact
-                                    bootstrapURLKeys={{ key: "AIzaSyBtMaALKyDaZ7UEF9liXHw1LputwA0UKjU"}}
+                                    bootstrapURLKeys={{ key: "googleapi"}}
                                     defaultCenter={this.state.center}
                                     defaultZoom={11}
                                   >
