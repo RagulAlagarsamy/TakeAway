@@ -107,8 +107,8 @@ class cart extends Component {
 }
 
 const mapStateToProps = state => ({  
-    menus: state.list,
-    user:state.user
+    menus: state.users.list,
+    user:state.users.user
 })
 
 export default connect(mapStateToProps)(cart)

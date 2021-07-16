@@ -65,6 +65,8 @@ const slice = createSlice({
 })
 
 
+
+
 export const loadMenus = () => apiCallBegan({
     url: "https://jsonplaceholder.typicode.com/users",
     onSuccess: "menus/menuReceived",
@@ -73,9 +75,8 @@ export const loadMenus = () => apiCallBegan({
 
 
 export const {menuAdded, menuResolved, menuReceived, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck,searchLists,searchSelectedList,updateQuantityDetails} = slice.actions
-export default function adminReducer() {
-    return slice.reducer;
-} 
+export default slice.reducer;
+
 
 
 

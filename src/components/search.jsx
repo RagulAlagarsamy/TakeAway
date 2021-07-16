@@ -11,7 +11,7 @@ class SelectSearch extends React.Component {
         <div className="container" style={{ textAlign: "left"}}>
         <div className="row">
         <div className= "col-lg-3 pull-right" style={{alignItems: "center"}}>
-        <img src={coffee.src} width="70px"></img>
+        <img src={coffee.src} width="70px" alt="coffee"></img>
         </div>
         <div className="col" style={{marginLeft: "20px", marginTop:"25px"}}>
         {coffee.title}

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { decreaseItems, increaseItems, getItems, paymentSuccess} from "../store/user";
+import { decreaseItems, increaseItems, paymentSuccess} from "../store/user";
 import { DataGrid } from '@material-ui/data-grid';
 import './dataGrid.css';
 import firebase  from '../config/fbConfig';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { db } from "../config/fbConfig";
-import { Modal, ModalHeader,ModalBody,ModalFooter } from 'reactstrap';
+import { Modal,ModalBody } from 'reactstrap';
 import Payment from './PaymentForm';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import './cart.css';
 
 
 const stripePromise = loadStripe("pk_test_51JAuGpSH4mPX8koHXg1rhzwl4HnX8K9EqzbqwouOQr8K9sd6zb5f0bUVZGn9Fuzyhoi7zMQ0IGZyzR4ZnH4m0pMD00eMvU15wo");
@@ -88,14 +89,13 @@ class cart extends Component {
         let status = false;
         if(this.props.user[0]){
            status =  this.props.user[0].status;
-          console.log(status);
         }
 
         const columns = [
             { field: 'src', headerName: 'Images', width: 200 , height: 500,
             sortable: false,
             renderCell: (params) =>{
-                return <img src={params.value} width="80px" style={{ margin: "auto" }} />
+                return <img src={params.value} width="80px" style={{ margin: "auto" }} alt="New Images" />
             }
             },
             { field: 'title', headerName: 'Product', width: 300 
@@ -125,6 +125,7 @@ class cart extends Component {
           ];
 
           const rows = this.props.menus;
+          
         
         return (
             <div>
@@ -154,11 +155,11 @@ class cart extends Component {
                         <div style={{ backgroundColor: "#f5f5f5", margin: "0px", padding: "10px"}}>
                                 <div>
                                 <div className="container mt-3 shadow p-2" style={{ backgroundColor: "white", borderRadius:"10px" }}>
-                                <h4 className="fw-normal p-3">Cart Details</h4> 
+                                <h4 className="fw-normal p-3">Cart Details<span className="h5 pull-right"> Total:${total}  </span></h4> 
                                     {this.props.menus.map((item) =>{
                                        return( <div className="row mb-3" key={item.id} style={{textAlign: "left"}}>
                                             <div className = "col-lg-3" width="50%" style={{ textAlign: "center"}}>
-                                                <img src={item.src}  width="50%" alt="image"/>
+                                                <img src={item.src}  width="50%" alt={item.id}/>
                                             </div>
                                             <div className = "col-lg-6 p-3">
                                             <h4 style={{ margin: "auto", textAlign: "left"}}>{item.title}</h4>
@@ -196,9 +197,9 @@ class cart extends Component {
 }
 
 const mapStateToProps = state => ({  
-    menus: state.list,
-    user:state.user,
-    currentUser: state.currentUser
+    menus: state.users.list,
+    user:state.users.user,
+    currentUser: state.users.currentUser
 })
 
 export default connect(mapStateToProps)(cart)

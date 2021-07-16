@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { decreaseItems, addItems, updateQuantityDetails } from "../store/user";
+import { updateQuantityDetails } from "../store/user";
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -54,7 +54,6 @@ class selected extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
         const index = nextProps.list.findIndex(item => item.title === nextProps.selectedItem.title);
         let count = [];
         if(index !== -1){
@@ -64,7 +63,6 @@ class selected extends Component {
             count =  nextProps.selectedItem
         }     
         this.setState(() => { return {quantity: count} })
-        console.log(this.state.quantity);
       }
 
     decreaseItems = () => {
@@ -86,7 +84,6 @@ class selected extends Component {
       setQuantity = (item) =>{
         //   var item = Object.assign({}, item)
         //   item.quantity = this.state.quantity;
-          console.log(item);
           this.props.dispatch(updateQuantityDetails(item))
           this.setState({ open: true, loadingOpen: true })
 
@@ -101,8 +98,7 @@ class selected extends Component {
     
 
     render() {   
-        console.log(this.state.quantity);
-        const { open, loadingOpen } = this.state;
+        const { open } = this.state;
         const classes = makeStyles((theme) => ({
             backdrop: {
               zIndex: theme.zIndex.drawer + 1,
@@ -121,6 +117,7 @@ class selected extends Component {
                                 </div>
                                 <div className = "col-lg-6 p-5">
                                 <h3 style={{ margin: "auto", textAlign: "left"}}>{this.state.quantity.title}</h3>
+                                <h5 style={{ margin: "20px 0px", textAlign: "left"}}>Price: <span style={{ color: "red" }}>${this.state.quantity.price}</span></h5>
                                 <p className="mt-4">{this.state.quantity.description}</p>
                                 {(this.state.quantity.quantity === 0)? <button className="btn btn-outline-success" style={{margin: "10px", fontSize: "12px"}} onClick={this.increaseItems}>Order</button> :
                                 <div><button className="btn btn-outline-success" style={{marginRight: "10px", fontSize: "12px", marginTop: 0}} onClick={this.decreaseItems}>-</button>{this.state.quantity.quantity}<button className="btn btn-outline-success" style={{marginLeft: "10px", fontSize: "12px",marginTop: 0}} onClick={this.increaseItems}>+</button><br></br><button className="btn btn-outline-success mt-3" onClick={() => this.setQuantity(this.state.quantity)} style={{fontSize:"11px"}}>ADD TO CART</button></div>}
@@ -138,9 +135,9 @@ class selected extends Component {
                                 </AvatarGroup>
                                 <br></br>
                                 <br></br>
-                                <Backdrop  open= {true}>
+                                {/* <Backdrop  open= {true}>
                                 <CircularProgress color="inherit" />
-                                </Backdrop>     
+                                </Backdrop>      */}
                                 </div>         
                     </div>
                     <Snackbar className={classes.backdrop} open={open} autoHideDuration={6000} onClose={this.handleClose}>
@@ -159,9 +156,9 @@ class selected extends Component {
 
 const mapStateToProps = state => {  
     return{
-        selectedItem: state.selectedItem,
-        list: state.list,
-        user: state.currentUser
+        selectedItem: state.users.selectedItem,
+        list: state.users.list,
+        user: state.users.currentUser
     }
 }
 

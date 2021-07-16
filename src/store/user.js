@@ -2,17 +2,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 import { searchList } from '../components/details/searchDetails';
+import { combineReducers } from "@reduxjs/toolkit";
 
+const initialState = {
+    list: [],
+    user: [],
+    admin: [],
+    searchList: searchList,
+    selectedItem:[],
+    currentAdmin: [],
+    currentUser: []
+}
 
-const slice = createSlice({
+const users = createSlice({
     name: 'users',
-    initialState: {
-        list: [],
-        user: [],
-        currentUser: [],
-        searchList: searchList,
-        selectedItem:[]
-    },
+    initialState: initialState,
     reducers: {
         menuReceived: (menus,action) =>{
             menus.list = action.payload;
@@ -99,34 +103,37 @@ const slice = createSlice({
         },
         updateProductDetails: (details,action) => {
             let index = details.searchList.findIndex(detail => detail.id === action.payload.id);
-            console.log(index);
             details.searchList[index] = action.payload;
-             index = details.list.findIndex(detail => detail.id === action.payload.id);
+              index = details.list.findIndex(detail => detail.id === action.payload.id);
             if(details.list[index]){
                 const temp = details.list[index];
-                details.list[index] = action.payload;
+                details.list[index] = Object.assign({}, action.payload)
                 details.list[index].quantity = temp.quantity;
                 details.list[index].total = details.list[index].quantity*details.list[index].price
             }
-            console.log(details.list[index], action.payload);
         },
         deleteItem: (details,action) => {
             const index = details.searchList.findIndex(detail => detail.title === action.payload.title);
             details.searchList.splice(index,1);
         },
         addItem: (details,action) => {
+            console.log(action.payload);
             if(details.searchList.length !== 0){
-                let index = details.searchList.findIndex(detail => detail.title === action.payload.title);
-                console.log(index);
-                if(index !== -1){
-                    alert("This Product is already exist.Adding New Item Failed.")
-                }else{
-                    details.searchList.push(action.payload)
-                    alert("Adding New Item Successfully.")
-                }
-            }else{
-                details.searchList = [action.payload];
+            details.searchList = action.payload;}
+            else{
+                details.searchList = [action.payload] 
             }
+            // if(details.searchList.length !== 0){
+            //     let index = details.searchList.findIndex(detail => detail.title === action.payload.title);
+            //     if(index !== -1){
+            //         alert("This Product is already exist.Adding New Item Failed.")
+            //     }else{
+            //         details.searchList.push(action.payload)
+            //         alert("Adding New Item Successfully.")
+            //     }
+            // }else{
+            //     details.searchList = [action.payload];
+            // }
         },
         searchLists: (details,action) => {
             console.log(details.searchList);
@@ -161,8 +168,6 @@ const slice = createSlice({
                 // })
             }
             }
-            console.log(details.list,details.searchList,action.payload);
-            
         },
         getItems: (details) =>{
             console.log(details);
@@ -173,7 +178,54 @@ const slice = createSlice({
     }
 })
 
-console.log(slice);
+const admin = createSlice({
+    name: 'admin',
+    initialState: initialState,
+    reducers: {
+        adminLoginCheck: (details,action) =>{
+            if(action.payload.email === "admin@test.com" && action.payload.password === "TestAdmin"){
+                    var admin = Object.assign({}, action.payload)
+                    details.admin = [admin]
+                    details.admin[0].status = "admin"
+                    details.currentAdmin = action.payload
+                    details.currentAdmin.fName = "admin"
+                }else{
+                alert('login failed..') 
+            }
+        },
+        adminLogoutCheck: (details,action) =>{
+            const index = details.admin.findIndex(detail => detail.email === action.payload.email);
+            if(index !== -1) {details.admin[index].status = false
+                details.currentAdmin=[]
+            }
+
+        },
+        updatingProductDetails: (details,action) => {
+            let index = details.searchList.findIndex(detail => detail.id === action.payload.id);
+            details.searchList[index] = action.payload;
+             index = details.list.findIndex(detail => detail.id === action.payload.id);
+            if(details.list[index]){
+                const temp = details.list[index];
+                details.list[index] = action.payload;
+                details.list[index].quantity = temp.quantity;
+                details.list[index].total = details.list[index].quantity*details.list[index].price
+            }
+        },
+        addNewProduct: (details,action) => {
+            if(details.searchList.length !== 0){
+                let index = details.searchList.findIndex(detail => detail.title === action.payload.title);
+                if(index !== -1){
+                    alert("This Product is already exist.Adding New Item Failed.")
+                }else{
+                    details.searchList.push(action.payload)
+                    alert("Adding New Item Successfully.")
+                }
+            }else{
+                details.searchList = [action.payload];
+            }
+        },
+    }
+})
 
 
 export const loadMenus = () => apiCallBegan({
@@ -183,8 +235,15 @@ export const loadMenus = () => apiCallBegan({
 })
 
 
-export const {menuAdded, menuResolved, getItems, menuReceived, googleSign, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck,searchLists,searchSelectedList,updateQuantityDetails,deleteItem,updateProductDetails,addItem,paymentSuccess} = slice.actions
-export default slice.reducer;
+const reducer = combineReducers({
+    users: users.reducer,
+    admin: admin.reducer,
+  })
+
+
+export const {menuAdded, menuResolved, getItems, menuReceived, googleSign, menuFailed, loginCheck, signupDetails,addNewItems, addItems, updateDetails,increaseItems,decreaseItems,logoutCheck,searchLists,searchSelectedList,updateQuantityDetails,deleteItem,updateProductDetails,addItem,paymentSuccess} = users.actions
+export const {adminLoginCheck, adminLogoutCheck, updatingProductDetails, addNewProduct} = admin.actions
+export default reducer;
 
 
 

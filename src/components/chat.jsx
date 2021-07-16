@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { auth } from  "../config/fbConfig";
-import { db } from "../config/fbConfig";
+import { db, messaging } from "../config/fbConfig";
 import { connect } from "react-redux";
-import firebase  from '../config/fbConfig';
 import './chat.css';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.currentUser,
+      user: [],
       chats: [],
       content: '',
       readError: null,
@@ -20,12 +18,17 @@ class Chat extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.myRef = React.createRef();
+    this.onMessageListener();
   }
 
   async componentDidMount() {
-    this.setState({ readError: null, loadingChats: true });
-    console.log(this.myRef.current);
-    const chatArea = this.myRef.current;
+    let user = "";
+    if(this.props.currentUser.length !== 0){
+      user = this.props.currentUser
+    }else{
+       user =this.props.currentAdmin
+    }
+    this.setState({ readError: null, loadingChats: true, user: user });
     try {
       db.ref("chats").on("value", snapshot => {
         let chats = [];
@@ -47,11 +50,39 @@ class Chat extends Component {
     });
   }
 
+  onMessageListener = messaging.onMessage(message => console.log("mensagem enviada"))
+
   async handleSubmit(event) {
     event.preventDefault();
     this.setState({ writeError: null });
-    const chatArea = this.myRef.current;
     try {
+      let body = {
+        to: "BFQcb3yPhd57ZJVIndAtg-s_a1D7HY7SjKiuk760DHctKs_CGzWU-8DKU5_Mu7I-IQXzYlJB4xJPXuUhAv-xl3I",
+        notification:{
+          title: this.state.user.fName,
+          body: this.state.content
+        }
+      }
+      let options={
+        method:"POST",
+        headers: new Headers({
+          Authorization:
+          "key=AAAAIvzLj0I:APA91bH7oFk99OYT7KsqdQCTm4Tn2OBLjhcU3V4Kvk65d1th1YmgwVIImgQcIzxrlRy97heGpNX8b0_DxWdb7xn5zd7sSDXqQnEG_-gQiEMKuRDqs1WM2KVQZqRBZYlDzxHjVWMdDEkf",
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(body)
+      }
+      fetch("https://fcm.googleapis.com/fcm/send",options).then(res =>{
+        console.log(res); 
+        console.log(messaging);    
+      }).catch(err => {
+        console.log(err);
+      })
+
+      messaging.onMessageCallback(payload => {
+        console.log(payload);
+      })
+        
       await db.ref("chats").push({
         content: this.state.content,
         timestamp: Date.now(),
@@ -61,6 +92,16 @@ class Chat extends Component {
     } catch (error) {
       this.setState({ writeError: error.message });
     }
+    debugger;
+    console.log(messaging);
+    messaging.onMessage(payload => {
+      const title = payload.data.title;
+      const options = {
+        body: payload.data.score
+      };
+      console.log(payload);
+      // return self.registration.showNotification(title, options);
+    });
   }
 
   formatTime(timestamp) {
@@ -74,18 +115,21 @@ class Chat extends Component {
     if(this.props.users[0]){
        status =  this.props.users[0].status;
     }
+    if(this.props.admin[0]){
+      status =  this.props.admin[0].status;
+   }
     return (
       <div className="container mt-3">
       <div className="mainContents text-center">
       <div className="w-100" style={{ backgroundColor: "white", padding: "30px", borderRadius: "25px"}}>
-          <h4 style={{ textAlign: "left" }} >Send Message to Admin </h4>
-          { (!status) ? <div style={{ textAlign: "left", marginTop: "30px" }}><h6>Please login</h6></div>:
-        <div>
+          <h4 style={{ textAlign: "left" }} >{(this.state.user.fName === "admin")? "Messages": "Send Message to Admin"}</h4>
+          { (status === true || status === "admin") ?        
+          <div>
         <div className="chat-area">
           {/* loading indicator */}
           {(this.state.loadingChats) ? <div className=" text-success" role="status">
             <h5>Loading...</h5> 
-          <span class="spinner-border spinner-border-sm p-3" role="status" aria-hidden="true"></span>
+          <span className="spinner-border spinner-border-sm p-3" role="status" aria-hidden="true"></span>
           </div> : ""}
           {/* chat area */}
           {this.state.chats.map(chat => {
@@ -107,7 +151,9 @@ class Chat extends Component {
           {this.state.error ? <p className="text-danger">{this.state.error}</p> : null}
           <button type="submit" className="btn btn-outline-success px-5">Send Message</button>
         </form>
-        </div>
+        </div> :
+          <div style={{ textAlign: "left", marginTop: "30px" }}><h6>Please login</h6></div>
+ 
           }
       </div>
       </div>
@@ -117,8 +163,10 @@ class Chat extends Component {
 }
 
 const mapStateToProps = state => ({  
-  currentUser: state.currentUser,
-  users: state.user,
+  currentUser: state.users.currentUser,
+  currentAdmin: state.admin.currentAdmin,
+  users: state.users.user,
+  admin : state.admin.admin
 })
 
 export default connect(mapStateToProps)(Chat)

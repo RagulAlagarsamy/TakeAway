@@ -6,8 +6,10 @@ import './profile.css';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
 import { storage } from '../config/fbConfig'
+import GoogleMapReact from 'google-map-react';
+import Autocomplete from "react-google-autocomplete";
+import ReactMapGL from 'react-map-gl';
 
 class profile extends Component {
     constructor(props) {
@@ -23,14 +25,29 @@ class profile extends Component {
             status: false
           },
           url:"",
-          errors: {}
+          errors: {},
+          center: {
+           lat:  13.001392 ,
+           lng:  80.243273
+          },
         };
       }
 
       componentDidMount() {
+        let center = {}
+        navigator.geolocation.getCurrentPosition(function(position) {
+          center = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+        });
+        // setTimeout(() => {
+        //   this.setState({ center })
+        //   console.log(this.state, center);
+        // },10000)
          if(this.props.users.length !== 0){
             var details = this.props.users; 
-            details.map(user => {
+            details.forEach(user => {
               if(user.email === this.props.currentUser.email){
                 var users = Object.assign({}, user)
                   return(
@@ -146,7 +163,6 @@ class profile extends Component {
           },
         },
       }));
-      
         return (
             <div>
             {(!status)? (
@@ -212,6 +228,35 @@ class profile extends Component {
                         </div>
                         <br></br>
                         <br></br>
+                        <div className="container mt-3">
+                          <div className="mainContents shadows p-3 mb-3" style={{ backgroundColor: "white", width: "100%", borderRadius: "25px", border: "1px solid black" }}>
+                            <div className="row m-3 w-100">
+                              <h4 className="p-3">Enter your location</h4>
+                              <div className="col-lg-6" >
+                              <Autocomplete
+                                  apiKey={"AIzaSyBtMaALKyDaZ7UEF9liXHw1LputwA0UKjU"}
+                                  onPlaceSelected={(place) => {
+                                    console.log(place);
+                                  }}
+                                  options={{
+                                    types: ["(regions)"],
+                                    componentRestrictions: { country: "in" },
+                                  }}
+                                  />
+                                </div>
+                                <div className="col-lg-6">
+                                <div style={{ height: '50vh', width: '80%' }}>
+                                  <GoogleMapReact
+                                    bootstrapURLKeys={{ key: "AIzaSyBtMaALKyDaZ7UEF9liXHw1LputwA0UKjU"}}
+                                    defaultCenter={this.state.center}
+                                    defaultZoom={11}
+                                  >
+                                  </GoogleMapReact>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        </div>
 
                         {/* <button className="w-40 btn btn-danger" type="submit">Submit</button> */}
                         <Button variant="contained" color="primary" type="submit">
@@ -228,8 +273,8 @@ class profile extends Component {
 }
 
 const mapStateToProps = state => ({  
-    users: state.user,
-    currentUser: state.currentUser
+    users: state.users.user,
+    currentUser: state.users.currentUser
 })
 
 export default connect(mapStateToProps)(profile)

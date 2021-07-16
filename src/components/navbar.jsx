@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { logoutCheck, searchSelectedList } from "../store/user";
+import { adminLogoutCheck, logoutCheck, searchSelectedList } from "../store/user";
 import SelectSearch from './search';
-import {searchList} from './details/searchDetails';
 import "./navbar.css";
 
 
@@ -24,7 +23,11 @@ class navbar extends Component {
 
     onLogout = () => {
       const input = this.props.user[0]
-      this.props.dispatch(logoutCheck(input));
+      if(this.props.user[0]){
+        this.props.dispatch(logoutCheck(input));
+      }else{
+        this.props.dispatch(adminLogoutCheck(this.props.admin[0]))
+      }
     }
 
 
@@ -57,14 +60,17 @@ class navbar extends Component {
       if(this.props.user[0]){
          status =  this.props.user[0].status;
       }
+      if(this.props.admin[0]){
+        status =  this.props.admin[0].status;
+     }
       
         return (
           <div>
             <nav className="navbar navbar-expand-lg navbar-dark p-2" style={{ backgroundColor: "black" }}>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse m-3" id="navbarTogglerDemo01">
+            <div className="collapse navbar-collapse m-3" id="navbarTogglerDemo01">
             <Link className="navbar-brand" style={{fontSize: "25px"}} to="/menu" >
              <strong>TakeAway</strong>
             </Link>
@@ -120,9 +126,10 @@ class navbar extends Component {
 }
 
 const mapStateToProps = state => ({  
-  user: state.user,
-  search: state.searchList,
-  filteredSearch: state.filteredSearch
+  user: state.users.user,
+  admin: state.admin.admin,
+  search: state.admin.searchList,
+  filteredSearch: state.users.filteredSearch
 })
 
 export default withRouter(connect(mapStateToProps)(navbar))

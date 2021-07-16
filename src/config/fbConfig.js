@@ -21,7 +21,7 @@ var config = {
 
   firebase.initializeApp(config);
 
-  const messaging = firebase.messaging(); 
+  export const messaging = firebase.messaging(); 
 
   export const getToken = (setTokenFound) => {
     return messaging.getToken({vapidKey: 'BFQcb3yPhd57ZJVIndAtg-s_a1D7HY7SjKiuk760DHctKs_CGzWU-8DKU5_Mu7I-IQXzYlJB4xJPXuUhAv-xl3I'}).then((currentToken) => {
@@ -44,6 +44,7 @@ var config = {
     messaging.onMessage((payload) => {
       resolve(payload);
     });
+    
 });
 
   export const auth = firebase.auth;

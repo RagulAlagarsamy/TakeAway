@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import './profile.css';
 import ProductManagement from './ProductManagement';
-import { HashRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
-import {routes} from './routing';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import Analytics from './analytics';
 // import './adminPanel.css'
 
@@ -27,7 +26,7 @@ class adminPanel extends Component {
           main: () => <Analytics />
         },
         {
-          path: "/adminPanel/management",
+          path: "/adminPanel/",
           main: () => <ProductManagement />
         },
       ];
@@ -56,7 +55,7 @@ class adminPanel extends Component {
                         <br></br>
                         <ul style={{ listStyleType: "none", padding: 0 }}>
                           <li style={{ padding: "15px", fontSize: "20px"}}>
-                          {/* <NavLink to="/adminPanel/analytics" style={{textDecoration: "none", color: "#b8b8b8"}} activeStyle={{ color: "white"}}>Analytics</NavLink> */}
+                          <NavLink to="/adminPanel/analytics" style={{textDecoration: "none", color: "#b8b8b8"}} activeStyle={{ color: "white"}}>Analytics</NavLink>
                           </li>
                           <li style={{ padding: "15px", fontSize: "20px"}}>
                           <NavLink to="/adminPanel/management" style={{textDecoration: "none", color: "#b8b8b8"}} activeStyle={{ color: "white"}}>Management</NavLink>
@@ -100,9 +99,9 @@ class adminPanel extends Component {
 }
 
 const mapStateToProps = state => ({  
-    users: state.user,
-    currentUser: state.currentUser,
-    menus: state.searchList
+    users: state.admin.admin,
+    currentUser: state.users.currentUser,
+    menus: state.admin.searchList
 })
 
 export default connect(mapStateToProps)(adminPanel)

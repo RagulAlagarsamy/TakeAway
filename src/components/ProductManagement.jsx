@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader,ModalBody,ModalFooter } from 'reactstrap';
+import { Modal,ModalBody } from 'reactstrap';
 import { connect } from "react-redux";
-import { updateProductDetails, deleteItem, addItem } from "../store/user";
+import { updateProductDetails, deleteItem, addItem,addNewProduct, updatingProductDetails } from "../store/user";
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import './ProductManagement.css';
+import { Link } from 'react-router-dom';
 
 class ProductManagement extends Component {
     constructor(props) {
@@ -48,7 +47,7 @@ class ProductManagement extends Component {
         if(this.validate()){
         const input = this.state.input;
         console.log(input);
-        this.props.dispatch(updateProductDetails(input));
+        this.props.dispatch(updatingProductDetails(input));
         alert("Successfully Updated.");
         this.setState({ModalVisibles: false});
         }else{
@@ -65,7 +64,7 @@ class ProductManagement extends Component {
         input.id = this.props.menus.length +1;
         input.quantity = 0;
         console.log(input);
-        this.props.dispatch(addItem(input));
+        this.props.dispatch(addNewProduct(input));
         this.setState({AddModalVisibles: false});
         }else{
             console.log("error");
@@ -120,7 +119,7 @@ class ProductManagement extends Component {
     }
 
     modalAddNewProductToggles = () =>{
-      this.setState({ AddModalVisibles : true})
+      this.setState({ AddModalVisibles : true, input: []})
     }
     modalAddNewProductCloseToggles = () =>{
       this.setState({ AddModalVisibles : false})
@@ -178,13 +177,13 @@ class ProductManagement extends Component {
                     <td>
                     {menu.title}
                     </td>
-                    <td><img src={menu.src} width="50px" style={{margin: "auto"}}></img></td>
+                    <td><img src={menu.src} width="50px" style={{margin: "auto"}} alt="coffee"></img></td>
                     <td>{menu.price}</td>
                     <td> Available</td>
                     <td> Admin</td>
                     <td> 
-                    <Button onClick={()=>this.modalOpenToggles(menu)} >Update</Button> 
-                    <Button onClick={()=>this.deleteItem(menu)}>Delete</Button>
+                    <Button variant="contained" color="primary" onClick={()=>this.modalOpenToggles(menu)} >Update</Button> 
+                    <Button  onClick={()=>this.deleteItem(menu)}>Delete</Button>
                             {/* <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClicks}>
                               Update/Delete
                             </Button>
@@ -252,7 +251,7 @@ class ProductManagement extends Component {
                         </div>
                         <div className="col-lg-6">
                         <p>Image Preview</p>
-                          <img src={this.state.input.src} width="250px" style={{ border:"5px solid white"}}></img>
+                          <img src={this.state.input.src} width="250px" style={{ border:"5px solid white"}} alt="coffee"></img>
                         </div>
                         </div>
                         </div>
@@ -301,7 +300,7 @@ class ProductManagement extends Component {
                         </div>
                         <div className="col-lg-6">
                         <p>Image Preview</p>
-                          <img src={this.state.input.src} width="250px" style={{ border:"5px solid white"}}></img>
+                          <img src={this.state.input.src} width="250px" style={{ border:"5px solid white"}} alt="coffee"></img>
                         </div>
                         </div>
                         </div>
@@ -317,9 +316,9 @@ class ProductManagement extends Component {
 }
 
 const mapStateToProps = state => ({  
-    users: state.user,
-    currentUser: state.currentUser,
-    menus: state.searchList
+    users: state.users.user,
+    currentUser: state.users.currentUser,
+    menus: state.admin.searchList
 })
 
 export default connect(mapStateToProps)(ProductManagement)

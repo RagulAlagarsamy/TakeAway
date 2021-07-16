@@ -17,7 +17,7 @@ class coffee extends Component {
     render() {
         return (
             <div style={{ backgroundColor:"white" }}>
-            <img src="https://www.csmedia1.com/lyonacloud.org/coffee.jpg" width="100%"></img>
+            <img src="https://www.csmedia1.com/lyonacloud.org/coffee.jpg" width="100%" alt="coffee"></img>
             <div className="container mb-5" style={{ backgroundColor:"white", borderRadius:'10px' }}>
             <div className="mainContents text-center"  style={{ backgroundColor:"white" }}>
                 <main className="form-details" style={{ marginRight: "auto"}}>
@@ -27,15 +27,15 @@ class coffee extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4">
-                        <img src="https://thumbs.dreamstime.com/b/hot-coffee-latte-art-spiral-shape-foam-cappuccino-isolated-white-background-clipping-path-195718672.jpg" width="80%" ></img>
+                        <img src="https://thumbs.dreamstime.com/b/hot-coffee-latte-art-spiral-shape-foam-cappuccino-isolated-white-background-clipping-path-195718672.jpg" width="80%" alt="coffee" ></img>
                         <h4 style={{ color:"#8e2e03" }}>Cappuccino</h4>
                         </div>
                         <div className="col-lg-4">
-                        <img src="https://thumbs.dreamstime.com/b/fresh-espresso-macchiato-white-small-cup-isolated-background-99424100.jpg" width="87%" ></img>
+                        <img src="https://thumbs.dreamstime.com/b/fresh-espresso-macchiato-white-small-cup-isolated-background-99424100.jpg" width="87%" alt="coffee" ></img>
                         <h4 style={{ color:"#8e2e03", paddingTop: "0px"}}>Espresso Macchiato</h4>
                         </div>
                         <div className="col-lg-4">
-                        <img src="https://image.freepik.com/free-photo/white-cup-black-coffee-isolated-white-background_252965-15.jpg" width="80%" ></img>
+                        <img src="https://image.freepik.com/free-photo/white-cup-black-coffee-isolated-white-background_252965-15.jpg" width="80%" alt="coffee" ></img>
                         <h4 style={{ color:"#8e2e03", paddingTop: "15px" }}>Americano</h4>
                         </div>
                     </div>
@@ -43,15 +43,15 @@ class coffee extends Component {
                     <br></br>
                     <div className="row">
                         <div className="col-lg-4">
-                        <img src="https://www.allwhitebackground.com/images/3/3239.jpg" width="80%" ></img>
+                        <img src="https://www.allwhitebackground.com/images/3/3239.jpg" width="80%" alt="coffee"></img>
                         <h4 style={{ color:"#8e2e03" }}>Black</h4>
                         </div>
                         <div className="col-lg-4">
-                        <img src="https://media.istockphoto.com/photos/cappuccino-with-cinnamon-on-a-foam-in-a-transparent-cup-with-a-double-picture-id1213046424?b=1&k=6&m=1213046424&s=170667a&w=0&h=B6nufLCbcQNdG8nvI_E3tIkPZ0Y64VjQ89plw0aoqk8=" width="90%" ></img>
+                        <img src="https://media.istockphoto.com/photos/cappuccino-with-cinnamon-on-a-foam-in-a-transparent-cup-with-a-double-picture-id1213046424?b=1&k=6&m=1213046424&s=170667a&w=0&h=B6nufLCbcQNdG8nvI_E3tIkPZ0Y64VjQ89plw0aoqk8=" width="90%" alt="coffee"></img>
                         <h4 style={{ color:"#8e2e03", paddingTop: "0px"}}>Galão</h4>
                         </div>
                         <div className="col-lg-4">
-                        <img src="https://thumbs.dreamstime.com/b/hot-coffee-caramel-macchiato-cappuccino-cup-isolated-white-ba-background-clipping-path-included-107025290.jpg" width="68%" ></img>
+                        <img src="https://thumbs.dreamstime.com/b/hot-coffee-caramel-macchiato-cappuccino-cup-isolated-white-ba-background-clipping-path-included-107025290.jpg" width="68%" alt="coffee"></img>
                         <h4 style={{ color:"#8e2e03", paddingTop: "15px" }}>Macchiato</h4>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ class coffee extends Component {
             <div className="container-fluid mt-4">
                     <div className="row">
                         <div className="col-lg-6">
-                        <img src="https://ak.picdn.net/shutterstock/videos/6204899/thumb/1.jpg" width="100%" ></img>
+                        <img src="https://ak.picdn.net/shutterstock/videos/6204899/thumb/1.jpg" width="100%" alt="coffee"></img>
                         </div>
                         <div className="col-lg-6" style={{padding:"70px", margin:"auto"}}>
                         <h4 style={{ color:"#8e2e03", paddingTop: "25px" }}>TakeAway Coffees</h4>
@@ -72,25 +72,25 @@ class coffee extends Component {
                         </div>
                     </div>
                 </div> 
-                <img src="http://godere.vn/images/banner.jpg" width="100%"></img>
+                <img src="http://godere.vn/images/banner.jpg" width="100%" alt="coffee"></img>
                 <div className="container-fluid mt-4 p-5" style={{ backgroundColor:"white" }} >
                 <h1 style={{ color:"#8e2e03", textAlign: "center" }}>Donuts</h1>
                     <div className="row m-5">
                         <div className="col-lg-4">
-                        <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX6898921.jpg" width="100%" ></img>
+                        <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX6898921.jpg" width="100%" alt="coffee" ></img>
                         <h4>Chocolate Donuts</h4>
                         </div>
                         <div className="col-lg-4 pt-5 mt-4">
-                        <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX18473949.jpg" width="64%" ></img>
+                        <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX18473949.jpg" width="64%" alt="coffee"></img>
                         <h4>White Chocolate Donuts</h4>
                         </div>
                         <div className="col-lg-4 pt-4">
-                        <img src="https://static8.depositphotos.com/1175884/i/600/depositphotos_10342353-stock-photo-white-chocolate-donut-isolated-in.jpg" width="90%" ></img>
+                        <img src="https://static8.depositphotos.com/1175884/i/600/depositphotos_10342353-stock-photo-white-chocolate-donut-isolated-in.jpg" width="90%" alt="coffee"></img>
                         <h4>White Creamy Donuts</h4>
                         </div>
                     </div>
                 </div>
-                    <img src="https://myhealthessentials.ca/wp-content/uploads/2016/08/1500-banner.jpg" width="100%"></img>
+                    <img src="https://myhealthessentials.ca/wp-content/uploads/2016/08/1500-banner.jpg" width="100%" alt="coffee"></img>
             </div>
         );
     }

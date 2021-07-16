@@ -1,7 +1,7 @@
 import React from 'react';
-import { loginCheck, googleSign } from "../store/user";
+import { loginCheck, googleSign, adminLoginCheck } from "../store/user";
 import { connect } from "react-redux";
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./login.css";
 import { signInWithGoogle } from "../helpers/auth";
 import Button from '@material-ui/core/Button';
@@ -58,7 +58,11 @@ class login extends React.Component {
     event.preventDefault();
     if(this.validate()){
     const input = this.state.input;
+    if(input.email === "admin@test.com"){
+      this.props.dispatch(adminLoginCheck(input))
+    }else{
       this.props.dispatch(loginCheck(input));
+    }
       setTimeout(() =>{
        this.props.users.map((user) => {
          if(user.email === this.state.input.email){
@@ -67,6 +71,13 @@ class login extends React.Component {
            }
           }
        })
+       this.props.admin.map((admin) => {
+        if(admin.email === this.state.input.email){
+          if(admin.status === "admin"){
+            this.props.history.push('/adminPanel/')
+          }
+         }
+      })
       },1000)
     }
   }
@@ -144,7 +155,8 @@ class login extends React.Component {
 }
 
 const mapStateToProps = state => ({  
-  users : state.user
+  users : state.users.user,
+  admin : state.admin.admin
 })
 
 
