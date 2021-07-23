@@ -5,7 +5,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.7.1/firebase-messaging.js');
 
 // Initialize the Firebase app in the service worker by passing the generated config
 var firebaseConfig = {
-    apiKey: 'AIzaSyAoeyiWuXGx8O0qfbhcgPnucsusIW1vI8c',
+    apiKey: {FCMApiKey},
     authDomain: 'project-id.firebaseapp.com',
     databaseURL: 'https://project-id.firebaseio.com',
     projectId: 'project-id',
@@ -113,7 +113,6 @@ messaging.onBackgroundMessage(function(payload) {
 //   // your app's Firebase config object.
 //   // https://firebase.google.com/docs/web/setup#config-object
 //   firebase.initializeApp({
-//     apiKey: 'AIzaSyAoeyiWuXGx8O0qfbhcgPnucsusIW1vI8c',
 //     authDomain: 'project-id.firebaseapp.com',
 //     databaseURL: 'https://project-id.firebaseio.com',
 //     projectId: 'project-id',

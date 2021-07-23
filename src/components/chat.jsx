@@ -66,7 +66,7 @@ class Chat extends Component {
         method:"POST",
         headers: new Headers({
           Authorization:
-          "key=AAAAIvzLj0I:APA91bH7oFk99OYT7KsqdQCTm4Tn2OBLjhcU3V4Kvk65d1th1YmgwVIImgQcIzxrlRy97heGpNX8b0_DxWdb7xn5zd7sSDXqQnEG_-gQiEMKuRDqs1WM2KVQZqRBZYlDzxHjVWMdDEkf",
+          "key=serverkey",
           "Content-Type": "application/json"
         }),
         body: JSON.stringify(body)

@@ -10,7 +10,7 @@ import "firebase/database";
 import "firebase/storage";
 
 var config = {
-    apiKey: "AIzaSyAoeyiWuXGx8O0qfbhcgPnucsusIW1vI8c",
+    apiKey: {FCMApiKey},
     authDomain: "takeaway-a0976.firebaseapp.com",
     databaseURL: "https://takeaway-a0976-default-rtdb.firebaseio.com",
     projectId: "takeaway-a0976",
@@ -24,7 +24,7 @@ var config = {
   export const messaging = firebase.messaging(); 
 
   export const getToken = (setTokenFound) => {
-    return messaging.getToken({vapidKey: 'BFQcb3yPhd57ZJVIndAtg-s_a1D7HY7SjKiuk760DHctKs_CGzWU-8DKU5_Mu7I-IQXzYlJB4xJPXuUhAv-xl3I'}).then((currentToken) => {
+    return messaging.getToken({vapidKey: 'fcmkey'}).then((currentToken) => {
       if (currentToken) {
         console.log('current token for client: ', currentToken);
         // Track the token -> client mapping, by sending to backend server

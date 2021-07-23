@@ -82,6 +82,7 @@ class selected extends Component {
     }
 
       setQuantity = (item) =>{
+        console.log(item);
         //   var item = Object.assign({}, item)
         //   item.quantity = this.state.quantity;
           this.props.dispatch(updateQuantityDetails(item))
