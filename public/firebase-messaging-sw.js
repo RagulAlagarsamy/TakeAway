@@ -5,7 +5,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.7.1/firebase-messaging.js');
 
 // Initialize the Firebase app in the service worker by passing the generated config
 var firebaseConfig = {
-    apiKey: 'firebaseapi',
+    apiKey: 'AIzaSyAoeyiWuXGx8O0qfbhcgPnucsusIW1vI8c',
     authDomain: 'project-id.firebaseapp.com',
     databaseURL: 'https://project-id.firebaseio.com',
     projectId: 'project-id',
@@ -21,9 +21,7 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 console.log(messaging);
 
-messaging.onMessage(res => {
-  console.log(res);
-})
+
 
 messaging.onBackgroundMessage(function(payload) {
   console.log('Received background message ', payload);
@@ -32,6 +30,10 @@ messaging.onBackgroundMessage(function(payload) {
   const notificationOptions = {
     body: payload.notification.body,
   };
+
+  messaging.onMessage(res => {
+    console.log(res);
+  })
 
   self.registration.showNotification(notificationTitle,
     notificationOptions);

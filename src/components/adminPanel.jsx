@@ -30,8 +30,6 @@ class adminPanel extends Component {
           main: () => <ProductManagement />
         },
       ];
-
-      console.log(this.state.input);
       
       
         return (
