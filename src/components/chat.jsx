@@ -3,6 +3,8 @@ import { db, messaging } from "../config/fbConfig";
 import { connect } from "react-redux";
 import './chat.css';
 
+const { REACT_APP_SERVERKEY } = process.env
+
 
 class Chat extends Component {
   constructor(props) {
@@ -66,7 +68,7 @@ class Chat extends Component {
         method:"POST",
         headers: new Headers({
           Authorization:
-          "key=serverkey",
+          `key=${REACT_APP_SERVERKEY}`,
           "Content-Type": "application/json"
         }),
         body: JSON.stringify(body)

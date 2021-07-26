@@ -11,6 +11,8 @@ import GoogleMapReact from 'google-map-react';
 import Autocomplete from "react-google-autocomplete";
 import ReactMapGL from 'react-map-gl';
 
+const { REACT_APP_GOOGLEAPI } = process.env
+
 class profile extends Component {
     constructor(props) {
         super(props);
@@ -234,7 +236,7 @@ class profile extends Component {
                               <h4 className="p-3">Enter your location</h4>
                               <div className="col-lg-6" >
                               <Autocomplete
-                                  apiKey={googleapi}
+                                  apiKey={process.env.REACT_APP_GOOGLEAPI}
                                   onPlaceSelected={(place) => {
                                     console.log(place);
                                   }}
@@ -247,7 +249,7 @@ class profile extends Component {
                                 <div className="col-lg-6">
                                 <div style={{ height: '50vh', width: '80%' }}>
                                   <GoogleMapReact
-                                    bootstrapURLKeys={{ key: "googleapi"}}
+                                    bootstrapURLKeys={{ key: REACT_APP_GOOGLEAPI}}
                                     defaultCenter={this.state.center}
                                     defaultZoom={11}
                                   >

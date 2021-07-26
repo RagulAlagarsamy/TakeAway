@@ -10,9 +10,7 @@ const api = ({ dispatch, getState }) => next => async action => {
         case actions.userAddItems.type :
                 const order = action.payload
                 console.log(order);
-                return db.add(order).then(ref =>{
-                    next(action)
-                })  
+                next(action)
         case actions.userGetItems.type :
                 const items = db
                 console.log(items);
