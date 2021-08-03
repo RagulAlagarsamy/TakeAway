@@ -22,7 +22,7 @@ class SelectSearch extends React.Component {
         );
         
     return (
-        <div className="shadows-lg mb-5 rounded" style={{ background: "white", minWidth:"27%", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left" ,maxHeight:"200px", overflow:"auto"}}>
+        <div className="shadows-lg mb-5 rounded" style={{ background: "white", width: "410px", zIndex:1, marginTop: "2px" ,position: "absolute", borderRadius:"3px", textAlign: "left" ,maxHeight:"200px", overflow:"auto"}}>
         {(listItems.length > 0) ? 
         <ul style={{ listStyleType: "none", padding: "0" }}>
         {listItems}

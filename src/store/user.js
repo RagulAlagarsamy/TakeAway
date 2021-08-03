@@ -40,7 +40,8 @@ const users = createSlice({
             }
         },
         increaseItems: (items,action) =>{
-            const index = items.list.findIndex(item => item.title === action.payload.title);
+            console.log(action);
+            const index = items.list.findIndex(item => item.title === action.value.title);
             if(index !== -1) {
                 items.list[index].quantity = items.list[index].quantity+1;
                 items.list[index].total = items.list[index].price* items.list[index].quantity;

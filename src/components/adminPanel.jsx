@@ -5,6 +5,7 @@ import './profile.css';
 import ProductManagement from './ProductManagement';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Analytics from './analytics';
+import Dashboard from './dashboard';
 // import './adminPanel.css'
 
 class adminPanel extends Component {
@@ -15,7 +16,7 @@ class adminPanel extends Component {
       }
 
     render() {
-      let status = false;
+      let status = true;
       if(this.props.users[0]){
          status =  this.props.users[0].status;
       }

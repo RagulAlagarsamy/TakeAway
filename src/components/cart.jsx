@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { decreaseItems, increaseItems, paymentSuccess} from "../store/user";
+import { decreaseItems, paymentSuccess} from "../store/user";
 import { DataGrid } from '@material-ui/data-grid';
 import './dataGrid.css';
 import firebase  from '../config/fbConfig';
@@ -54,11 +54,11 @@ class cart extends Component {
     }
 
     decreaseItems = (menu) => {
-       this.props.dispatch(decreaseItems(menu))
+        this.props.dispatch({ type: "decreaseUserItems", value: menu }) 
     }
 
     increaseItems = (menu) => {
-        this.props.dispatch(increaseItems(menu))
+        this.props.dispatch({ type: "increaseUserItems", value: menu }) 
      }
 
      
@@ -201,5 +201,11 @@ const mapStateToProps = state => ({
     user:state.users.user,
     currentUser: state.users.currentUser
 })
+
+// const mapDispachToProps = dispatch => {
+//     return {
+//         decreaseItems: (menu) => dispatch({ type: decreaseItems, value: menu })
+//     };
+//   };
 
 export default connect(mapStateToProps)(cart)

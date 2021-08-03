@@ -86,7 +86,7 @@ class navbar extends Component {
               <Link className="nav-link" to="/desserts">Desert</Link>
             </li>
             </ul>
-            <form className="container" style={{maxWidth:"405px", marginLeft:"5px", padding: "0", backgroundColor: "white"}}>
+            <form className="container" style={{maxWidth:"406px", marginLeft:"5px", padding: "0", backgroundColor: "white"}}>
               <div className="input-group" style={{ width: "80%", display: "inline-flex" }}>
                 <input type="text" className="form-control" placeholder="Search for Coffees, Desserts, Icecreams" aria-label="Username" aria-describedby="basic-addon1" style={{ border: "0"}} value={this.state.searchItem}  onChange={(e) => this.changeHandler(e)} onClick={this.handleChange} onBlur={this.onBlur}/>
               </div>
