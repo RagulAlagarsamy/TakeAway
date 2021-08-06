@@ -260,7 +260,6 @@ export function* rootSagaa() {
 
 
   export default function* rootSaga() {
-    debugger;
     yield fork(watchAndLog)
   }
 

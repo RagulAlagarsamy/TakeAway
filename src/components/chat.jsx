@@ -39,7 +39,11 @@ class Chat extends Component {
         chats.sort(function (a, b) { return a.timestamp - b.timestamp })
         this.setState({ loadingChats: false });
         this.setState({ chats });
-        this.myRef.current.scrollIntoView();
+        console.log(this.myRef.current, chats);
+        if(chats && this.props.users[0] || this.props.admin[0]){
+          console.log("hi");
+          setTimeout(() => {this.myRef.current.scrollIntoView()}, 500)  ;
+        }
       });
     } catch (error) {
       this.setState({ readError: error.message, loadingChats: false });
@@ -54,7 +58,7 @@ class Chat extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    this.myRef.current.scrollIntoView();
+    setTimeout(() => {this.myRef.current.scrollIntoView()}, 500);
     this.setState({ writeError: null });
     try {
       let body = {
@@ -156,4 +160,4 @@ const mapStateToProps = state => ({
   admin : state.admin.admin
 })
 
-export default connect(mapStateToProps)(Chat)
+export default connect(mapStateToProps, {forwardRef: true})(Chat)

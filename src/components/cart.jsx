@@ -13,7 +13,8 @@ import Payment from './PaymentForm';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import './cart.css';
-
+import Context from '../userContext';
+import Test1 from './test1';
 
 const stripePromise = loadStripe("pk_test_51JAuGpSH4mPX8koHXg1rhzwl4HnX8K9EqzbqwouOQr8K9sd6zb5f0bUVZGn9Fuzyhoi7zMQ0IGZyzR4ZnH4m0pMD00eMvU15wo");
 
@@ -25,6 +26,7 @@ class cart extends Component {
             menus:[],
             orderMenu: []
         }
+        this.textInput = React.createRef();
     }
 
     fetchBlogs=async()=>{
@@ -53,6 +55,11 @@ class cart extends Component {
         return total;
     }
 
+    focusTextInput = () => {
+        this.textInput.current.focus();
+        console.log(this.textInput.current.value);
+    }
+
     decreaseItems = (menu) => {
         this.props.dispatch({ type: "decreaseUserItems", value: menu }) 
     }
@@ -67,9 +74,9 @@ class cart extends Component {
       }
     
      submitCart = (items,total) => {
-        // axios.post('http://localhost:5001/api/sms',
-        // {to: "+916379350835",
-        // body: "Dear Customer, Your payment for TakeAway order #1212 is Rs."+total})
+        axios.post('http://localhost:5001/api/sms',
+        {to: "+916379350835",
+        body: "Dear Customer, Your payment for TakeAway order #1212 is Rs."+total})
         this.setState({ModalVisibles : true})
         db.ref("orders").push({
             CustomerName: this.props.currentUser.fName,
@@ -83,8 +90,13 @@ class cart extends Component {
         this.setState({ModalVisibles: false});
         this.props.dispatch(paymentSuccess())
        }
+
+       updateContext = () => {
+          this.context.update("Ravi")
+       }
  
     render() {
+        console.log(this.context.name);
         const total = (this.props.menus.length !== 0) ? this.getArraySum(this.props.menus) : 0
         let status = false;
         if(this.props.user[0]){
@@ -131,6 +143,12 @@ class cart extends Component {
             <div>
             <div className="container mt-3">
             <h1 style={{textAlign: "left", margin: "30px"}}>Shopping Cart</h1>
+            {/* <button onClick={this.updateContext}></button> */}
+            {/* <input
+                    type="button"
+                    value="Focus the text input"
+                    onClick={this.focusTextInput}
+                    /> */}
                 <div className="row" style={{textAlign: "left", backgroundColor:"white" , margin: "30px", borderRadius: "20px"}}>
                 <h1 style={{textAlign: "left" , margin: "30px"}}>Your Bag  <span className="h5">{this.props.menus.length} item</span></h1>
                     <div className="col" style={{ height: 450, width: '100%', textAlign: "center" }}>
@@ -145,6 +163,12 @@ class cart extends Component {
                     <Button variant="outlined" color="secondary" style={{ marginLeft: "10px" }}>
                     <Link to= "/menu" style={{ textDecoration: "none", color: "red" }}>  Go Back </Link>
                     </Button>
+                </div>
+                <div>
+                    <Test1></Test1>
+                    {/* <input
+                    type="text"
+                    ref={this.textInput} /> */}
                 </div>
             </div>
             <Modal isOpen={this.state.ModalVisibles} style={{ maxWidth:"1000px", textAlign:"left"}}>
@@ -208,4 +232,5 @@ const mapStateToProps = state => ({
 //     };
 //   };
 
+cart.contextType = Context
 export default connect(mapStateToProps)(cart)

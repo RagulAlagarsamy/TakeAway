@@ -48,9 +48,10 @@ class login extends React.Component {
   }
 
   onSuccessRedirect = async () => {
-    // axios.post('http://localhost:5001/api/sms',
-    // {to: "+916379350835",
-    // body: "TAKEAWAY - Dear Customer,you have successfully login into your account."})
+    console.log("sms")
+    axios.post('http://localhost:5001/api/sms',
+    {to: "+916379350835",
+    body: "TAKEAWAY - Dear Customer,you have successfully login into your account."})
       this.props.history.push('/menu')
    }
      
