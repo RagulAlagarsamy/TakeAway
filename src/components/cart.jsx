@@ -74,9 +74,9 @@ class cart extends Component {
       }
     
      submitCart = (items,total) => {
-        axios.post('http://localhost:5001/api/sms',
-        {to: "+916379350835",
-        body: "Dear Customer, Your payment for TakeAway order #1212 is Rs."+total})
+        // axios.post('http://localhost:5001/api/sms',
+        // {to: "+916379350835",
+        // body: "Dear Customer, Your payment for TakeAway order #1212 is Rs."+total})
         this.setState({ModalVisibles : true})
         db.ref("orders").push({
             CustomerName: this.props.currentUser.fName,
@@ -96,7 +96,6 @@ class cart extends Component {
        }
  
     render() {
-        console.log(this.context.name);
         const total = (this.props.menus.length !== 0) ? this.getArraySum(this.props.menus) : 0
         let status = false;
         if(this.props.user[0]){
