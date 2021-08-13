@@ -6,7 +6,7 @@ import { storage } from '../config/fbConfig';
 import moment from 'moment';
 
 const { REACT_APP_SERVERKEY } = process.env
-
+const pos = [];
 
 class Chat extends Component {
   constructor(props) {
@@ -29,8 +29,6 @@ class Chat extends Component {
   }
 
   async componentDidMount() {
-
- 
     let user = "";
     if(this.props.currentUser.length !== 0){
       user = this.props.currentUser
@@ -60,6 +58,7 @@ class Chat extends Component {
           }
         },1000)
       });
+
     } catch (error) {
       this.setState({ readError: error.message, loadingChats: false });
     }
@@ -147,22 +146,96 @@ class Chat extends Component {
     let newDate = new Date();
     let now = moment(newDate).format("DD/MM/YYYY")
     let date =  moment(now,"DD/MM/YYYY").diff(moment(time,"DD/MM/YYYY"),'days') + " days ago"
-    // console.log("time", date)
-    return date
-  }
-
-  scrollEvent = () => {
-    console.log("scroll");
-    let scrollpos = window.scrollY;
-    console.log(scrollpos);
-    if(scrollpos > 10){
-      console.log("up...");
-        // add_class_on_scroll();
+    let days = "";
+    if(date === "0 days ago"){
+      days = "Today"
+    } else if(date === "1 days ago"){
+      days = "Yesterday"
     }
     else {
-      console.log("down...");
-        // remove_class_on_scroll();
+      const d = new Date(timestamp);
+      const time = `${(d.getMonth()+1)}/${d.getDate()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
+      days = moment(time).format('MMM Do YYYY');
     }
+    return days
+  }
+
+  scrollEvent = (e) => {
+
+
+    
+    // const container = document.getElementsByClassName('chat-area');
+    // container.addEventListener('scroll', () => {
+    //   console.log(container.scrollTop);
+    // });
+
+ 
+
+    // const chat = e.target.innerHTML
+    // console.log(chat);
+    // const date = document.getElementsByClassName("active").innerHTML
+    // return date
+    // console.log(e.target.scrollY);
+    // const bottom = this.myRef.current.scrollHeight - this.myRef.current.scrollTop === this.myRef.current.clientHeight;
+    // console.log(bottom, e, window.scrollY);
+    // console.log(e.target.getBoundingClientRect());
+    // console.log(this.myRef.current.scrollHeight,this.myRef.current.scrollTop,this.myRef.current.clientHeight);
+
+  //   const winScroll = this.myRef.current.scrollTop
+
+  // const height =
+  // this.myRef.current.scrollHeight -
+  // this.myRef.current.clientHeight
+
+  // const scrolled = winScroll / height
+
+  // console.log(this.myRef.current.scrollTop,scrolled, winScroll, height);
+    // console.log(chat[0].scrollHeight);
+    // let scrollpos = chat[0].scrollHeight;
+    // console.log(scrollpos);
+    // console.log(e.target.scrollTop, e.target.scrollHeight, e.target.clientHeight);
+    // const { scrollHeight, scrollTop, clientHeight } = e.target;
+    // const scroll = scrollHeight - scrollTop - clientHeight;
+    // console.log(scroll);
+    // var a = scrollTop;
+    // var b = scrollHeight - clientHeight;
+    // var c = a / b;
+    // console.log(c,scrollHeight,clientHeight);
+
+    // const chat = new IntersectionObserver(this.handleObserverEvent, {})
+    // console.log(chat);
+
+    let options = {
+      root:  this.myRef.current,
+    }
+    const chat  = new IntersectionObserver(([entry]) =>{
+      console.log(entry.target.innerText);
+     let res = entry.isIntersecting
+     console.log(res);
+    }, [options]);
+      // const message = document.getElementsByClassName('date')
+      // console.log(message, this.myRef.current);
+      console.log(this.chatRef.current);
+      chat.observe(this.chatRef.current)
+    // pos.push(e.target.scrollTop)
+    // console.log(pos);
+    // let i;
+    // for(i = 0; i < pos.length; i++){
+    //   console.log(pos[i],pos[i-1]);
+    //   if(pos[i] > pos[i-1]){
+    //     console.log("up...");
+    //       // add_class_on_scroll();
+    //   }
+    //   else {
+    //     console.log("down...");
+    //       // remove_class_on_scroll();
+    //   }
+    // }
+  }
+
+  handleObserverEvent = entries => {
+    console.log("hi");
+    entries.forEach(entry => console.log(entry))
   }
 
   getCurrentDate() {
@@ -206,8 +279,8 @@ class Chat extends Component {
             return <div key={chat.timestamp} ref={this.myRef}>
              {(this.getDate((this.state.chats[i-1])? this.state.chats[i-1].timestamp : "" ) === this.getDate(chat.timestamp)) ? "" :
              <div style={{ textAlign: "center", margin: "20px" }}>
-             <div className="date" style={{ backgroundColor: "#d1d1d1", borderRadius: "20px", padding: "7px", width: "10%", margin: "auto", fontSize: "14px" }}>
-               {this.getDate(chat.timestamp) === "1 days ago" ? "Yesterday" : this.getDate(chat.timestamp)}
+             <div className="date" ref= {this.chatRef} style={{ backgroundColor: "#d1d1d1", borderRadius: "20px", padding: "7px", width: "10%", margin: "auto", fontSize: "14px" }}>
+               {this.getDate(chat.timestamp)}
              </div>
              </div>
               }
@@ -235,11 +308,11 @@ class Chat extends Component {
           }) }
 
         </div>
-        <div style={{ textAlign: "center", margin: "20px" }}>
+        {/* <div style={{ textAlign: "center", margin: "20px" }}>
               <div style={{ backgroundColor: "#d1d1d1", borderRadius: "20px", padding: "13px", width: "100%", fontSize: "14px" }}>
                 {this.getCurrentDate()}
               </div>
-        </div>
+        </div> */}
         <form onSubmit={this.handleSubmit}>
           {/* {this.state.url ? <img src ={this.state.url} width="25%" margin="20px" /> : ""} */}
           <div style={{ display: "flex" }}>
