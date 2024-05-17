@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TakeAway/static/css/main.b3fe1f44.chunk.css",
-    "main.js": "/TakeAway/static/js/main.bffc70cb.chunk.js",
-    "main.js.map": "/TakeAway/static/js/main.bffc70cb.chunk.js.map",
+    "main.js": "/TakeAway/static/js/main.fc71c2a3.chunk.js",
+    "main.js.map": "/TakeAway/static/js/main.fc71c2a3.chunk.js.map",
     "runtime-main.js": "/TakeAway/static/js/runtime-main.4bb09301.js",
     "runtime-main.js.map": "/TakeAway/static/js/runtime-main.4bb09301.js.map",
     "static/css/2.f83b9687.chunk.css": "/TakeAway/static/css/2.f83b9687.chunk.css",
@@ -28,6 +28,6 @@
     "static/css/2.f83b9687.chunk.css",
     "static/js/2.5540b68d.chunk.js",
     "static/css/main.b3fe1f44.chunk.css",
-    "static/js/main.bffc70cb.chunk.js"
+    "static/js/main.fc71c2a3.chunk.js"
   ]
 }
