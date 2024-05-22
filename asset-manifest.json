@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/TakeAway/static/css/main.b3fe1f44.chunk.css",
-    "main.js": "/TakeAway/static/js/main.fc71c2a3.chunk.js",
-    "main.js.map": "/TakeAway/static/js/main.fc71c2a3.chunk.js.map",
+    "main.css": "/TakeAway/static/css/main.7faa412e.chunk.css",
+    "main.js": "/TakeAway/static/js/main.8ed12d3c.chunk.js",
+    "main.js.map": "/TakeAway/static/js/main.8ed12d3c.chunk.js.map",
     "runtime-main.js": "/TakeAway/static/js/runtime-main.4bb09301.js",
     "runtime-main.js.map": "/TakeAway/static/js/runtime-main.4bb09301.js.map",
     "static/css/2.f83b9687.chunk.css": "/TakeAway/static/css/2.f83b9687.chunk.css",
@@ -14,20 +14,20 @@
     "service-worker.js": "/TakeAway/service-worker.js",
     "service-worker.js.map": "/TakeAway/service-worker.js.map",
     "static/css/2.f83b9687.chunk.css.map": "/TakeAway/static/css/2.f83b9687.chunk.css.map",
-    "static/css/main.b3fe1f44.chunk.css.map": "/TakeAway/static/css/main.b3fe1f44.chunk.css.map",
+    "static/css/main.7faa412e.chunk.css.map": "/TakeAway/static/css/main.7faa412e.chunk.css.map",
     "static/js/2.5540b68d.chunk.js.LICENSE.txt": "/TakeAway/static/js/2.5540b68d.chunk.js.LICENSE.txt",
     "static/media/489_girl_drink_coffee.f0171cbb.mp4": "/TakeAway/static/media/489_girl_drink_coffee.f0171cbb.mp4",
+    "static/media/FirstImage.cff02a10.png": "/TakeAway/static/media/FirstImage.cff02a10.png",
+    "static/media/SecondImage.bc043dda.png": "/TakeAway/static/media/SecondImage.bc043dda.png",
     "static/media/home-3-icon-img-1.23de4e84.png": "/TakeAway/static/media/home-3-icon-img-1.23de4e84.png",
     "static/media/home-3-img-2.7bfba44e.jpeg": "/TakeAway/static/media/home-3-img-2.7bfba44e.jpeg",
-    "static/media/home3-img-3.b60cedbe.jpeg": "/TakeAway/static/media/home3-img-3.b60cedbe.jpeg",
-    "static/media/vecteezy_a-cup-of-art-latte-or-cappuccino-coffee-with-retro-filter-effect_1898592.54cf02ae.jpg": "/TakeAway/static/media/vecteezy_a-cup-of-art-latte-or-cappuccino-coffee-with-retro-filter-effect_1898592.54cf02ae.jpg",
-    "static/media/vecteezy_barista-pouring-milk-into-a-glass-of-iced-coffee_2671770.93647fbb.jpg": "/TakeAway/static/media/vecteezy_barista-pouring-milk-into-a-glass-of-iced-coffee_2671770.93647fbb.jpg"
+    "static/media/home3-img-3.b60cedbe.jpeg": "/TakeAway/static/media/home3-img-3.b60cedbe.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.4bb09301.js",
     "static/css/2.f83b9687.chunk.css",
     "static/js/2.5540b68d.chunk.js",
-    "static/css/main.b3fe1f44.chunk.css",
-    "static/js/main.fc71c2a3.chunk.js"
+    "static/css/main.7faa412e.chunk.css",
+    "static/js/main.8ed12d3c.chunk.js"
   ]
 }
