@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TakeAway/static/css/main.7faa412e.chunk.css",
+    "main.css": "/TakeAway/static/css/main.a0bb870e.chunk.css",
     "main.js": "/TakeAway/static/js/main.8ed12d3c.chunk.js",
     "main.js.map": "/TakeAway/static/js/main.8ed12d3c.chunk.js.map",
     "runtime-main.js": "/TakeAway/static/js/runtime-main.4bb09301.js",
@@ -14,7 +14,7 @@
     "service-worker.js": "/TakeAway/service-worker.js",
     "service-worker.js.map": "/TakeAway/service-worker.js.map",
     "static/css/2.f83b9687.chunk.css.map": "/TakeAway/static/css/2.f83b9687.chunk.css.map",
-    "static/css/main.7faa412e.chunk.css.map": "/TakeAway/static/css/main.7faa412e.chunk.css.map",
+    "static/css/main.a0bb870e.chunk.css.map": "/TakeAway/static/css/main.a0bb870e.chunk.css.map",
     "static/js/2.5540b68d.chunk.js.LICENSE.txt": "/TakeAway/static/js/2.5540b68d.chunk.js.LICENSE.txt",
     "static/media/489_girl_drink_coffee.f0171cbb.mp4": "/TakeAway/static/media/489_girl_drink_coffee.f0171cbb.mp4",
     "static/media/FirstImage.cff02a10.png": "/TakeAway/static/media/FirstImage.cff02a10.png",
@@ -27,7 +27,7 @@
     "static/js/runtime-main.4bb09301.js",
     "static/css/2.f83b9687.chunk.css",
     "static/js/2.5540b68d.chunk.js",
-    "static/css/main.7faa412e.chunk.css",
+    "static/css/main.a0bb870e.chunk.css",
     "static/js/main.8ed12d3c.chunk.js"
   ]
 }
