@@ -1,17 +1,17 @@
-
 // Scripts for firebase and firebase messaging
-importScripts('https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/8.7.1/firebase-messaging.js');
+importScripts("https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.7.1/firebase-messaging.js");
 
 // Initialize the Firebase app in the service worker by passing the generated config
+
 var firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "takeaway-a0976.firebaseapp.com",
-  databaseURL: "https://takeaway-a0976-default-rtdb.firebaseio.com",
-  projectId: "takeaway-a0976",
-  storageBucket: "takeaway-a0976.appspot.com",
+  authDomain: "takeaway-dd9b4.firebaseapp.com",
+  databaseURL: "https://takeaway-dd9b4-default-rtdb.firebaseio.com",
+  projectId: "takeaway-dd9b4",
+  storageBucket: "takeaway-dd9b4.appspot.com",
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -20,35 +20,20 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 console.log(messaging);
 
-
-
-messaging.onBackgroundMessage(function(payload) {
-  console.log('Received background message ', payload);
+messaging.onBackgroundMessage(function (payload) {
+  console.log("Received background message ", payload);
 
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
   };
 
-  messaging.onMessage(res => {
+  messaging.onMessage((res) => {
     console.log(res);
-  })
+  });
 
-  self.registration.showNotification(notificationTitle,
-    notificationOptions);
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* eslint-disable no-undef */
 
@@ -59,7 +44,7 @@ messaging.onBackgroundMessage(function(payload) {
 //     messagingSenderId: "150270086978",
 // })
 
-// const messaging = getMessaging(firebase);     
+// const messaging = getMessaging(firebase);
 
 // navigator.serviceWorker.register('/service-worker.js').then(registration => {
 //     firebase.messaging().useServiceWorker(registration)
@@ -73,28 +58,26 @@ messaging.onBackgroundMessage(function(payload) {
 //           .then((currentToken) => {
 //             if (currentToken) {
 //               console.log('current token for client: ', currentToken);
-    
+
 //               // Track the token -> client mapping, by sending to backend server
 //               // show on the UI that permission is secured
 //             } else {
 //               console.log('No registration token available. Request permission to generate one.');
-    
-//               // shows on the UI that permission is required 
+
+//               // shows on the UI that permission is required
 //             }
 //           }).catch((err) => {
 //             console.log('An error occurred while retrieving token. ', err);
 //             // catch error while creating client token
-//           });  
+//           });
 //         })
 //         .catch(function(err) {
 //           console.log("Service worker registration failed, error:"  , err );
-//       }); 
+//       });
 //     }
 
 // import firebase from "firebase/app";
 // import "firebase/messaging";
-
-
 
 // See: https://github.com/microsoft/TypeScript/issues/14877
 /** @type {ServiceWorkerGlobalScope} */
