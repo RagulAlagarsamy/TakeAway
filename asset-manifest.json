@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/TakeAway/static/css/main.a0bb870e.chunk.css",
-    "main.js": "/TakeAway/static/js/main.8ed12d3c.chunk.js",
-    "main.js.map": "/TakeAway/static/js/main.8ed12d3c.chunk.js.map",
+    "main.js": "/TakeAway/static/js/main.ebfa63fc.chunk.js",
+    "main.js.map": "/TakeAway/static/js/main.ebfa63fc.chunk.js.map",
     "runtime-main.js": "/TakeAway/static/js/runtime-main.4bb09301.js",
     "runtime-main.js.map": "/TakeAway/static/js/runtime-main.4bb09301.js.map",
     "static/css/2.f83b9687.chunk.css": "/TakeAway/static/css/2.f83b9687.chunk.css",
-    "static/js/2.5540b68d.chunk.js": "/TakeAway/static/js/2.5540b68d.chunk.js",
-    "static/js/2.5540b68d.chunk.js.map": "/TakeAway/static/js/2.5540b68d.chunk.js.map",
+    "static/js/2.8c1618f3.chunk.js": "/TakeAway/static/js/2.8c1618f3.chunk.js",
+    "static/js/2.8c1618f3.chunk.js.map": "/TakeAway/static/js/2.8c1618f3.chunk.js.map",
     "static/js/3.9790ce1f.chunk.js": "/TakeAway/static/js/3.9790ce1f.chunk.js",
     "static/js/3.9790ce1f.chunk.js.map": "/TakeAway/static/js/3.9790ce1f.chunk.js.map",
     "index.html": "/TakeAway/index.html",
@@ -15,10 +15,11 @@
     "service-worker.js.map": "/TakeAway/service-worker.js.map",
     "static/css/2.f83b9687.chunk.css.map": "/TakeAway/static/css/2.f83b9687.chunk.css.map",
     "static/css/main.a0bb870e.chunk.css.map": "/TakeAway/static/css/main.a0bb870e.chunk.css.map",
-    "static/js/2.5540b68d.chunk.js.LICENSE.txt": "/TakeAway/static/js/2.5540b68d.chunk.js.LICENSE.txt",
+    "static/js/2.8c1618f3.chunk.js.LICENSE.txt": "/TakeAway/static/js/2.8c1618f3.chunk.js.LICENSE.txt",
     "static/media/489_girl_drink_coffee.f0171cbb.mp4": "/TakeAway/static/media/489_girl_drink_coffee.f0171cbb.mp4",
     "static/media/FirstImage.cff02a10.png": "/TakeAway/static/media/FirstImage.cff02a10.png",
     "static/media/SecondImage.bc043dda.png": "/TakeAway/static/media/SecondImage.bc043dda.png",
+    "static/media/coffeeLogo2.75f7d23b.jpeg": "/TakeAway/static/media/coffeeLogo2.75f7d23b.jpeg",
     "static/media/home-3-icon-img-1.23de4e84.png": "/TakeAway/static/media/home-3-icon-img-1.23de4e84.png",
     "static/media/home-3-img-2.7bfba44e.jpeg": "/TakeAway/static/media/home-3-img-2.7bfba44e.jpeg",
     "static/media/home3-img-3.b60cedbe.jpeg": "/TakeAway/static/media/home3-img-3.b60cedbe.jpeg"
@@ -26,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.4bb09301.js",
     "static/css/2.f83b9687.chunk.css",
-    "static/js/2.5540b68d.chunk.js",
+    "static/js/2.8c1618f3.chunk.js",
     "static/css/main.a0bb870e.chunk.css",
-    "static/js/main.8ed12d3c.chunk.js"
+    "static/js/main.ebfa63fc.chunk.js"
   ]
 }
